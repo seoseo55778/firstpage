@@ -131,7 +131,6 @@ export function Cases() {
                 >
                   <h3 className="case-row__title font-display">{item.title}</h3>
                   <span className="case-row__action" aria-hidden>
-                    <span className="case-row__lime" />
                     <span className={cn("case-row__btn", isOpen && "is-open")}>
                       <ChevronDown size={18} />
                     </span>
