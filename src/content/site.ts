@@ -26,12 +26,12 @@ export const site = {
 
 export const projectSpheres = [
   { name: "Промышленность", bg: "#E9FF24", grow: 1.25 },
-  { name: "Строительство", bg: "#B8A7FF", grow: 1.1 },
+  { name: "Строительство", bg: "#98E8C0", grow: 1.1 },
   { name: "Интернет-магазины", bg: "#E9FF24", grow: 1.6 },
-  { name: "Телеком", bg: "#B8A7FF", grow: 1.05 },
-  { name: "Автобизнес", bg: "#B8A7FF", grow: 1.2 },
+  { name: "Телеком", bg: "#98E8C0", grow: 1.05 },
+  { name: "Автобизнес", bg: "#98E8C0", grow: 1.2 },
   { name: "Финансы", bg: "#E9FF24", grow: 1.0 },
-  { name: "Гостиницы", bg: "#B8A7FF", grow: 1.1 },
+  { name: "Гостиницы", bg: "#98E8C0", grow: 1.1 },
   { name: "Правовые сервисы", bg: "#E9FF24", grow: 1.55 },
 ] as const;
 
