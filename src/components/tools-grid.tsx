@@ -1,20 +1,7 @@
 import { tools } from "@/content/site";
 import type { CSSProperties } from "react";
 
-const desktopRows = [
-  ["Manus", "ChatGPT", "Gemini", "Semrush", "Google Search Console", "Google Cloud Platform"],
-  ["Cursor Pro", "TopSite", "Screaming Frog", "Ahrefs", "Serpstat", "Keys.so"],
-  ["PageSpeed Insights", "n8n", "Claude Code", "Codex", "Grok", "Python (SEO-скрипты)"],
-  ["Yandex Wordstat API", "GA4", "Яндекс.Метрика", "Яндекс.Вебмастер", "Топвизор", "WordKeeper"],
-  ["Key Assort", "Figma", "Miro", "Google Indexing API", "SAPE", "Miralinks"],
-];
-
-const toolsByName = new Map<string, (typeof tools)[number]>(tools.map((tool) => [tool.name, tool]));
-
-function ToolTag({ name }: { name: string }) {
-  const tool = toolsByName.get(name);
-  if (!tool) return null;
-
+function ToolTag({ tool }: { tool: (typeof tools)[number] }) {
   return (
     <span
       tabIndex={0}
@@ -38,18 +25,9 @@ export function ToolsGrid() {
         <h2 className="font-display text-4xl tracking-tight text-ink sm:text-5xl">
           Мой рабочий стек
         </h2>
-        <div className="mt-12 hidden w-full flex-col gap-4 lg:flex">
-          {desktopRows.map((row) => (
-            <div key={row.join("-")} className="flex w-full items-center justify-between gap-4">
-              {row.map((name) => (
-                <ToolTag key={name} name={name} />
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="mt-12 flex w-full flex-wrap items-center justify-start gap-x-4 gap-y-3 lg:hidden">
+        <div className="mt-12 flex w-full flex-wrap items-center justify-start gap-x-4 gap-y-3 sm:gap-x-5 sm:gap-y-4">
           {tools.map((tool) => (
-            <ToolTag key={tool.name} name={tool.name} />
+            <ToolTag key={tool.name} tool={tool} />
           ))}
         </div>
       </div>
