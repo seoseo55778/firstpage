@@ -22,7 +22,7 @@
   --color-accent-hover: var(--accent-hover);
   --font-sans: var(--font-geologica);
   --font-display: var(--font-geologica);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-geologica);
 }
 
 html {
@@ -32,12 +32,16 @@ html {
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-geologica), system-ui, sans-serif;
 }
 
 .font-display {
-  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-family: var(--font-geologica), system-ui, sans-serif;
   font-weight: 500;
+}
+
+* {
+  font-family: inherit;
 }
 
 .orbit {

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geologica, Geist_Mono } from "next/font/google";
+import { Geologica } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -7,11 +7,6 @@ const geologica = Geologica({
   variable: "--font-geologica",
   subsets: ["latin", "cyrillic"],
   weight: ["300", "400", "500", "600", "700"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${geologica.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${geologica.variable} font-sans antialiased`}
       >
         {children}
       </body>
