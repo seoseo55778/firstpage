@@ -30,10 +30,12 @@ export default function Home() {
       <Header />
 
       <section className="relative px-4 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-36">
-        <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-[1.25fr_0.75fr]">
           <Reveal>
-            <h1 className="whitespace-pre-line font-display text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-tight text-ink">
-              {site.hero.title}
+            <h1 className="font-display text-[clamp(2.4rem,5.4vw,5rem)] leading-[0.94] tracking-tight text-ink">
+              SEO, <span className="text-accent-soft">которое растёт</span>
+              <br />
+              в заявки
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
               {site.hero.lead}
@@ -43,7 +45,7 @@ export default function Home() {
                 href={site.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="tg-btn group inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 text-base font-medium"
+                className="tg-btn group inline-flex h-14 min-w-[230px] items-center justify-center gap-2 rounded-full px-10 text-base font-medium"
               >
                 Написать в Telegram
                 <ArrowUpRight
@@ -53,14 +55,14 @@ export default function Home() {
               </a>
               <a
                 href="#cases"
-                className="inline-flex h-14 items-center justify-center rounded-full border border-line px-8 text-base text-ink transition hover:border-accent hover:text-accent"
+                className="inline-flex h-14 min-w-[210px] items-center justify-center rounded-full border border-line px-10 text-base text-ink transition hover:border-accent hover:text-accent"
               >
                 Смотреть кейсы
               </a>
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="relative mx-auto max-w-[420px] lg:ml-auto">
+            <div className="relative mx-auto max-w-[340px] lg:ml-auto">
               <div className="overflow-hidden rounded-[32px] bg-surface shadow-[0_24px_70px_rgba(34,34,34,0.10)]">
                 <Image
                   src="/gordei.png"
@@ -70,20 +72,6 @@ export default function Home() {
                   priority
                   className="h-auto w-full object-cover object-[center_18%]"
                 />
-              </div>
-              <div className="mt-5">
-                <p className="font-display text-2xl text-ink">{site.name}</p>
-                <p className="mt-1 text-sm text-muted">{site.role}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {site.niches.map((n) => (
-                    <span
-                      key={n}
-                      className="rounded-full border border-line bg-surface px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-muted"
-                    >
-                      {n}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
           </Reveal>
