@@ -136,12 +136,13 @@ body {
 .skill-card__title {
   position: relative;
   z-index: 1;
-  margin: 0.55rem 1.75rem 0 0;
+  margin: 0.55rem 0.65rem 0 0;
   font-size: 1.55rem;
   font-weight: 500;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
   color: var(--ink);
+  text-wrap: balance;
 }
 
 .skill-card__desc {
@@ -216,13 +217,16 @@ body {
 
 @media (min-width: 1280px) {
   .skill-card__title {
-    font-size: 1.5rem;
+    font-size: 1.34rem;
+    line-height: 1.16;
+    margin-right: 0.35rem;
   }
 
   .skill-card__num {
-    top: -0.18em;
-    right: -0.2em;
-    font-size: 7.5rem;
+    top: -0.32em;
+    right: -0.28em;
+    font-size: 8.4rem;
+    opacity: 0.12;
   }
 }
 

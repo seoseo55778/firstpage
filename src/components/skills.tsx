@@ -8,7 +8,7 @@ type Competency = (typeof competencies)[number] & { href?: string };
 
 function CompetencyCard({ item }: { item: Competency }) {
   const className =
-    "skill-card group relative flex h-full min-h-[292px] flex-col overflow-hidden rounded-[24px] border border-line bg-surface p-6 focus-visible:outline-none sm:min-h-[312px] sm:p-7";
+    "skill-card group relative flex h-full min-h-[292px] flex-col overflow-hidden rounded-[24px] border border-line bg-surface p-6 focus-visible:outline-none sm:min-h-[312px] sm:p-7 xl:p-[1.4rem]";
   const style = { "--card-accent": item.accent } as CSSProperties;
 
   const inner = (
