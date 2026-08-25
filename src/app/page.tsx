@@ -34,7 +34,7 @@ export default function Home() {
           <Reveal>
             <h1 className="font-display text-[clamp(2.2rem,4.8vw,4.35rem)] leading-[0.96] tracking-tight text-ink">
               <span className="block whitespace-nowrap">
-                SEO, <span className="text-accent-soft">которое растёт</span>
+                SEO, <span className="text-accent">которое растёт</span>
               </span>
               <span className="block">в заявки</span>
             </h1>
