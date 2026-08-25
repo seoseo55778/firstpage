@@ -1,5 +1,6 @@
 import { tools } from "@/content/site";
-import type { CSSProperties } from "react";
+
+const featuredTools = new Set(["n8n", "Ahrefs", "Cursor Pro", "Python (SEO-скрипты)"]);
 
 export function ToolsGrid() {
   return (
@@ -8,17 +9,13 @@ export function ToolsGrid() {
         <h2 className="font-display text-4xl tracking-tight text-ink sm:text-5xl">
           Софт, который я использую
         </h2>
-        <div className="mt-10 flex flex-wrap items-center gap-3">
+        <div className="mx-auto mt-12 flex max-w-[1000px] flex-wrap items-center justify-center gap-x-5 gap-y-4">
           {tools.map((tool) => (
             <span
               key={tool.name}
-              className="tool-tag inline-flex min-h-11 items-center rounded-full bg-[#F3F4F6] px-5 text-sm font-medium text-[#111827] transition-all duration-300 ease-out"
-              style={
-                {
-                  "--hover-bg": tool.color,
-                  "--hover-text": "textColor" in tool ? tool.textColor : "#ffffff",
-                } as CSSProperties & Record<"--hover-bg" | "--hover-text", string>
-              }
+              className={`tool-tag inline-flex items-center rounded-full px-8 py-4 text-lg font-semibold text-[#111827] transition-all duration-300 ease-out sm:text-xl ${
+                featuredTools.has(tool.name) ? "tool-tag--featured" : ""
+              }`}
             >
               {tool.name}
             </span>
