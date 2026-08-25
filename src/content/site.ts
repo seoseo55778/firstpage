@@ -131,32 +131,24 @@ export const competencies = [
   },
 ] as const;
 
-export const tools: { name: string; color: string }[] = [
-  { name: "Screaming Frog", color: "#6cbf4e" },
-  { name: "PageSpeed Insights", color: "#4285F4" },
-  { name: "Ahrefs", color: "#FF7A59" },
-  { name: "Serpstat", color: "#5C2D91" },
-  { name: "Keys.so", color: "#2D9CDB" },
-  { name: "Яндекс Wordstat", color: "#FC3F1D" },
-  { name: "KeyCollector", color: "#E67E22" },
-  { name: "Key Assort", color: "#D35400" },
-  { name: "WordKeeper", color: "#00897B" },
-  { name: "Букварикс", color: "#3949AB" },
-  { name: "SiteAnalyzer", color: "#00ACC1" },
-  { name: "GA4", color: "#E37400" },
-  { name: "Яндекс.Метрика", color: "#FC3F1D" },
-  { name: "Топвизор", color: "#3D8BDB" },
-  { name: "GSC", color: "#34A853" },
-  { name: "Яндекс Вебмастер", color: "#FC3F1D" },
-  { name: "Miralinks", color: "#E53935" },
-  { name: "Gogetlinks", color: "#1E88E5" },
-  { name: "CheckTrust", color: "#43A047" },
-  { name: "Главред", color: "#222222" },
-  { name: "Text.ru", color: "#00ACC1" },
-  { name: "Тургенев", color: "#6D4C41" },
-  { name: "Figma", color: "#F24E1E" },
-  { name: "Miro", color: "#C9A227" },
-];
+export const toolGroups = [
+  {
+    title: "Аналитика и поиск",
+    tools: ["Ahrefs", "Keys.so", "GA4", "Яндекс.Метрика", "GSC", "Яндекс.Вебмастер", "Топвизор"],
+  },
+  {
+    title: "Техническое SEO и парсинг",
+    tools: ["Screaming Frog", "PageSpeed Insights", "KeyCollector", "Key Assort", "WordKeeper"],
+  },
+  {
+    title: "Автоматизация и AI",
+    tools: ["n8n", "Cursor Pro", "Python (SEO-скрипты)", "Yandex Wordstat API"],
+  },
+  {
+    title: "Проектирование и UX",
+    tools: ["Figma", "Miro"],
+  },
+] as const;
 
 export type CaseStudy = {
   slug: string;
