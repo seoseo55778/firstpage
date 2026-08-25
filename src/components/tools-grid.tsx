@@ -11,10 +11,14 @@ export function ToolsGrid() {
           {tools.map((t) => (
             <span
               key={t.name}
-              className="block max-w-[210px] font-display text-[clamp(1.05rem,1.45vw,1.65rem)] font-medium leading-tight tracking-tight transition-transform duration-300 hover:-translate-y-1"
-              style={{ color: t.color }}
+              className="tool-pill inline-flex min-h-12 w-full items-center justify-between rounded-full border border-line bg-[#f4f4f4] px-5 text-sm font-medium text-ink transition-all duration-300 hover:-translate-y-1 hover:border-transparent hover:bg-accent-soft"
             >
-              {t.name}
+              <span>{t.name}</span>
+              <span
+                aria-hidden
+                className="h-2.5 w-2.5 rounded-full transition-transform duration-300"
+                style={{ backgroundColor: t.color }}
+              />
             </span>
           ))}
         </div>

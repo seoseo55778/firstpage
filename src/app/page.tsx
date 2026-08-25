@@ -1,4 +1,5 @@
 import { Cases } from "@/components/cases";
+import { CustomCursor } from "@/components/custom-cursor";
 import { Header } from "@/components/header";
 import { Reveal } from "@/components/reveal";
 import { Skills } from "@/components/skills";
@@ -27,6 +28,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <CustomCursor />
       <Header />
 
       <section className="relative px-4 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-36">
@@ -34,7 +36,7 @@ export default function Home() {
           <Reveal>
             <h1 className="font-display text-[clamp(2.2rem,4.8vw,4.35rem)] leading-[0.96] tracking-tight text-ink">
               <span className="block whitespace-nowrap">
-                SEO, <span className="text-accent">которое растёт</span>
+                SEO, <span className="hero-stroke">которое растёт</span>
               </span>
               <span className="block">в заявки</span>
             </h1>
@@ -74,6 +76,10 @@ export default function Home() {
                   className="h-auto w-full object-cover object-[center_18%]"
                 />
               </div>
+              <div className="absolute -bottom-5 left-1/2 w-[82%] -translate-x-1/2 rounded-2xl border border-line bg-white/92 px-5 py-4 shadow-[0_18px_42px_rgba(34,34,34,0.10)] backdrop-blur">
+                <p className="text-sm font-semibold text-ink">3 года в SEO</p>
+                <p className="mt-1 text-xs text-muted">Опыт в агентстве, B2B и e-commerce</p>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -92,15 +98,16 @@ export default function Home() {
           </Reveal>
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {process.map((p, i) => {
-              const filled = i === 1 || i === 2;
               return (
                 <Reveal key={p.title} delay={i * 0.06}>
                   <article
                     className={cn(
-                      "process-card h-full rounded-[28px] border border-line p-7 sm:p-10",
-                      filled ? "bg-accent-soft" : "bg-surface",
+                      "process-card relative h-full overflow-hidden rounded-[28px] border border-line bg-surface p-7 sm:p-10",
                     )}
                   >
+                    <span className="absolute right-6 top-5 font-display text-6xl font-semibold leading-none text-accent-soft">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <h3 className="font-display text-2xl text-ink sm:text-3xl">{p.title}</h3>
                     <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted">{p.text}</p>
                   </article>

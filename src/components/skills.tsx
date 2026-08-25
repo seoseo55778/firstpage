@@ -17,8 +17,14 @@ export function Skills() {
             <Reveal key={c.title} delay={(i % 3) * 0.05}>
               <article
                 tabIndex={0}
-                className="skill-card h-full cursor-default rounded-[24px] border border-line bg-surface p-6 focus-visible:outline-none sm:p-8"
+                className="skill-card group relative h-full cursor-default rounded-[24px] border border-line bg-surface p-6 focus-visible:outline-none sm:p-8"
               >
+                <span
+                  aria-hidden
+                  className="absolute right-6 top-6 text-2xl leading-none text-ink opacity-0 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:opacity-100 group-focus-visible:-translate-y-1 group-focus-visible:translate-x-1 group-focus-visible:opacity-100"
+                >
+                  ↗
+                </span>
                 <h3 className="skill-card__title font-display text-2xl leading-tight text-ink">
                   {c.title}
                 </h3>

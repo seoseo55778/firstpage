@@ -50,6 +50,13 @@ body {
     radial-gradient(640px 360px at 0% 12%, rgba(240, 255, 64, 0.18), transparent 52%);
 }
 
+.hero-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1.4px var(--ink);
+  text-stroke: 1.4px var(--ink);
+  font-style: italic;
+}
+
 ::selection {
   background: var(--accent);
   color: #fff;
@@ -71,20 +78,10 @@ body {
 
 .skill-card:hover,
 .skill-card:focus-visible {
-  background: var(--accent);
-  border-color: var(--accent);
-  transform: translateY(-6px);
-  box-shadow: 0 22px 50px rgba(36, 87, 255, 0.16);
-}
-
-.skill-card:hover .skill-card__title,
-.skill-card:focus-visible .skill-card__title {
-  color: #fff;
-}
-
-.skill-card:hover .skill-card__item,
-.skill-card:focus-visible .skill-card__item {
-  color: rgba(255, 255, 255, 0.86);
+  background: var(--surface);
+  border-color: var(--ink);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 42px rgba(34, 34, 34, 0.08);
 }
 
 .process-card {

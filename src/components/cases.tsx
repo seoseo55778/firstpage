@@ -2,10 +2,63 @@
 
 import { cases, type CaseStudy } from "@/content/site";
 import { AnimatePresence, motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+
+function CountUp({ value }: { value: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [display, setDisplay] = useState(value.match(/\d/) ? "0" : value);
+
+  useEffect(() => {
+    const match = value.match(/^([×+]?)(\d+(?:[,.]\d+)?)(.*)$/);
+    if (!match) {
+      setDisplay(value);
+      return;
+    }
+
+    const [, prefix, rawNumber, suffix] = match;
+    const target = Number(rawNumber.replace(",", "."));
+    let frame = 0;
+    let started = false;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || started) return;
+        started = true;
+        const start = performance.now();
+        const duration = 950;
+
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = target * eased;
+          const formatted =
+            rawNumber.includes(",") || rawNumber.includes(".")
+              ? current.toFixed(1).replace(".", ",")
+              : String(Math.round(current));
+
+          setDisplay(`${prefix}${formatted}${suffix}`);
+          if (progress < 1) frame = requestAnimationFrame(tick);
+        };
+
+        frame = requestAnimationFrame(tick);
+      },
+      { threshold: 0.45 },
+    );
+
+    const node = ref.current;
+    if (node) observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [value]);
+
+  return <div ref={ref}>{display}</div>;
+}
 
 function CaseBody({ item }: { item: CaseStudy }) {
   return (
@@ -35,7 +88,7 @@ function CaseBody({ item }: { item: CaseStudy }) {
           {item.results.map((r) => (
             <div key={r.label} className="rounded-2xl border border-line bg-surface px-3 py-4 sm:px-4">
               <div className="font-display text-2xl tracking-tight text-accent sm:text-3xl">
-                {r.value}
+                <CountUp value={r.value} />
               </div>
               <div className="mt-2 text-[11px] uppercase leading-snug tracking-[0.12em] text-muted">
                 {r.label}
@@ -73,6 +126,7 @@ export function Cases() {
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? "" : item.slug)}
+                  data-cursor="case"
                   className="flex w-full items-start gap-4 py-6 text-left sm:items-center sm:gap-8 sm:py-8"
                   aria-expanded={isOpen}
                 >
@@ -84,10 +138,10 @@ export function Cases() {
                   <span
                     className={cn(
                       "mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-ink transition-all duration-500",
-                      isOpen && "rotate-45 border-accent bg-accent text-white",
+                      isOpen && "rotate-180 border-ink",
                     )}
                   >
-                    <Plus size={18} />
+                    <ChevronDown size={18} />
                   </span>
                 </button>
                 <AnimatePresence initial={false}>
