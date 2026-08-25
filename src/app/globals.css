@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #f4f1ea;
-  --ink: #1e1c18;
-  --muted: #6b675f;
-  --line: rgba(30, 28, 24, 0.1);
+  --paper: #f4f4f4;
+  --ink: #222222;
+  --muted: #787878;
+  --line: #d9d9d9;
   --surface: #ffffff;
-  --accent: #3f6f4a;
-  --accent-soft: #e7efe6;
-  --accent-hover: #2f5639;
+  --accent: #ff2159;
+  --accent-soft: #f0ff40;
+  --accent-hover: #121212;
 }
 
 @theme inline {
@@ -42,7 +42,7 @@ body {
 
 .orbit {
   background:
-    radial-gradient(900px 480px at 88% -8%, rgba(63, 111, 74, 0.12), transparent 55%),
+    radial-gradient(900px 480px at 88% -8%, rgba(255, 33, 89, 0.08), transparent 55%),
     radial-gradient(640px 360px at 0% 12%, rgba(255, 255, 255, 0.7), transparent 50%);
 }
 
@@ -76,5 +76,5 @@ body {
   background: var(--accent);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 16px 32px rgba(63, 111, 74, 0.28);
+  box-shadow: 0 16px 32px rgba(255, 33, 89, 0.24);
 }

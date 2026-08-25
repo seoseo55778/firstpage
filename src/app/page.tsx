@@ -32,8 +32,7 @@ export default function Home() {
       <section className="relative px-4 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-36">
         <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
-            <p className="text-sm text-muted">{site.hero.kicker}</p>
-            <h1 className="mt-4 whitespace-pre-line font-display text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-tight text-ink">
+            <h1 className="whitespace-pre-line font-display text-[clamp(2.4rem,6vw,5.4rem)] leading-[0.95] tracking-tight text-ink">
               {site.hero.title}
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
@@ -62,7 +61,7 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.1}>
             <div className="relative mx-auto max-w-[420px] lg:ml-auto">
-              <div className="overflow-hidden rounded-[32px] bg-accent-soft">
+              <div className="overflow-hidden rounded-[32px] bg-surface shadow-[0_24px_70px_rgba(34,34,34,0.10)]">
                 <Image
                   src="/gordei.png"
                   alt="Гордей Гежа"
