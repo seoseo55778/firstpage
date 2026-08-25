@@ -62,45 +62,42 @@ function CountUp({ value }: { value: string }) {
 
 function CaseBody({ item }: { item: CaseStudy }) {
   return (
-    <div className="grid gap-10 border-t border-line px-0 pb-12 pt-8 lg:grid-cols-[1.1fr_0.9fr]">
-      <div>
-        <p className="max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
-          {item.problem}
-        </p>
-        <p className="mt-8 text-sm font-medium text-accent">Работы по проекту</p>
-        <ul className="mt-4 space-y-3">
-          {item.work.map((w) => (
-            <li
-              key={w}
-              className="grid grid-cols-[auto_1fr] gap-3 text-[15px] leading-relaxed text-ink/80"
-            >
-              <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-accent" />
-              {w}
-            </li>
-          ))}
-        </ul>
-        {item.note ? (
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted">{item.note}</p>
-        ) : null}
-      </div>
-      <div className="space-y-4">
-        <div className="grid grid-cols-3 gap-3">
-          {item.results.map((r) => (
-            <div key={r.label} className="rounded-2xl border border-line bg-surface px-3 py-4 sm:px-4">
-              <div className="font-display text-2xl tracking-tight text-accent sm:text-3xl">
-                <CountUp value={r.value} />
+    <div className="case-panel">
+      <div className="case-body">
+        <div>
+          <p className="max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
+            {item.problem}
+          </p>
+          <p className="case-body__kicker">Работы по проекту</p>
+          <ul className="mt-4 space-y-3">
+            {item.work.map((w) => (
+              <li key={w} className="case-body__item">
+                <span aria-hidden className="case-body__dot" />
+                {w}
+              </li>
+            ))}
+          </ul>
+          {item.note ? (
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted">{item.note}</p>
+          ) : null}
+        </div>
+        <div className="case-aside">
+          <div className="case-metrics">
+            {item.results.map((r) => (
+              <div key={r.label} className="case-metrics__item">
+                <div className="case-metrics__value font-display">
+                  <CountUp value={r.value} />
+                </div>
+                <div className="case-metrics__label">{r.label}</div>
               </div>
-              <div className="mt-2 text-[11px] uppercase leading-snug tracking-[0.12em] text-muted">
-                {r.label}
-              </div>
+            ))}
+          </div>
+          {item.images.map((img) => (
+            <div key={img.src} className="case-chart">
+              <Image src={img.src} alt={img.alt} width={1200} height={720} className="h-auto w-full" />
             </div>
           ))}
         </div>
-        {item.images.map((img) => (
-          <div key={img.src} className="overflow-hidden rounded-2xl border border-line bg-white">
-            <Image src={img.src} alt={img.alt} width={1200} height={720} className="h-auto w-full" />
-          </div>
-        ))}
       </div>
     </div>
   );
@@ -122,25 +119,22 @@ export function Cases() {
           {cases.map((item) => {
             const isOpen = open === item.slug;
             return (
-              <article key={item.slug} className="border-b border-line last:border-b-0">
+              <article
+                key={item.slug}
+                className={cn("case-item border-b border-line last:border-b-0", isOpen && "is-open")}
+              >
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? "" : item.slug)}
-                  className="flex w-full items-start gap-4 py-6 text-left sm:items-center sm:gap-8 sm:py-8"
+                  className="case-row"
                   aria-expanded={isOpen}
                 >
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-display text-2xl leading-tight tracking-tight text-ink sm:text-3xl">
-                      {item.title}
-                    </h3>
-                  </div>
-                  <span
-                    className={cn(
-                      "mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-ink transition-all duration-500",
-                      isOpen && "rotate-180 border-ink",
-                    )}
-                  >
-                    <ChevronDown size={18} />
+                  <h3 className="case-row__title font-display">{item.title}</h3>
+                  <span className="case-row__action" aria-hidden>
+                    <span className="case-row__lime" />
+                    <span className={cn("case-row__btn", isOpen && "is-open")}>
+                      <ChevronDown size={18} />
+                    </span>
                   </span>
                 </button>
                 <AnimatePresence initial={false}>
