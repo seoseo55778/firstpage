@@ -9,59 +9,43 @@ import { cn } from "@/lib/utils";
 
 function CaseBody({ item }: { item: CaseStudy }) {
   return (
-    <div className="grid gap-10 border-t border-cream/10 px-0 pb-12 pt-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+    <div className="grid gap-10 border-t border-line px-0 pb-12 pt-8 lg:grid-cols-[1.1fr_0.9fr]">
       <div>
-        <p className="max-w-2xl text-[15px] leading-relaxed text-cream/70 sm:text-base">
+        <p className="max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
           {item.problem}
         </p>
-        <p className="mt-8 text-[11px] uppercase tracking-[0.22em] text-lime">
-          Что сделал
-        </p>
+        <p className="mt-8 text-sm font-medium text-accent">Работы по проекту</p>
         <ul className="mt-4 space-y-3">
           {item.work.map((w) => (
             <li
               key={w}
-              className="grid grid-cols-[auto_1fr] gap-3 text-[15px] leading-relaxed text-cream/80"
+              className="grid grid-cols-[auto_1fr] gap-3 text-[15px] leading-relaxed text-ink/80"
             >
-              <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-lime" />
+              <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-accent" />
               {w}
             </li>
           ))}
         </ul>
         {item.note ? (
-          <p className="mt-6 max-w-xl text-sm leading-relaxed text-cream/40">
-            {item.note}
-          </p>
+          <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted">{item.note}</p>
         ) : null}
       </div>
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-3">
           {item.results.map((r) => (
-            <div
-              key={r.label}
-              className="rounded-2xl border border-cream/10 bg-cream/[0.03] px-3 py-4 sm:px-4"
-            >
-              <div className="font-display text-2xl tracking-tight text-lime sm:text-3xl">
+            <div key={r.label} className="rounded-2xl border border-line bg-surface px-3 py-4 sm:px-4">
+              <div className="font-display text-2xl tracking-tight text-accent sm:text-3xl">
                 {r.value}
               </div>
-              <div className="mt-2 text-[11px] uppercase leading-snug tracking-[0.12em] text-cream/45">
+              <div className="mt-2 text-[11px] uppercase leading-snug tracking-[0.12em] text-muted">
                 {r.label}
               </div>
             </div>
           ))}
         </div>
         {item.images.map((img) => (
-          <div
-            key={img.src}
-            className="overflow-hidden rounded-2xl border border-cream/10 bg-white"
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={1200}
-              height={720}
-              className="h-auto w-full"
-            />
+          <div key={img.src} className="overflow-hidden rounded-2xl border border-line bg-white">
+            <Image src={img.src} alt={img.alt} width={1200} height={720} className="h-auto w-full" />
           </div>
         ))}
       </div>
@@ -73,54 +57,40 @@ export function Cases() {
   const [open, setOpen] = useState<string>(cases[0].slug);
 
   return (
-    <section id="cases" className="px-4 py-24 sm:px-8 sm:py-32">
-      <div className="mx-auto max-w-[1440px]">
-        <div className="mb-12 flex flex-col gap-4 sm:mb-16 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="text-[11px] uppercase tracking-[0.28em] text-lime">
-              03 — Кейсы
-            </p>
-            <h2 className="mt-3 font-display text-4xl leading-[0.95] tracking-tight text-cream sm:text-6xl">
-              Цифры, а не
-              <br />
-              «рост видимости»
-            </h2>
-          </div>
-          <p className="max-w-sm text-sm leading-relaxed text-cream/50">
-            Три проекта с измеримым эффектом и ещё два — с сильной механикой
-            (фильтры, B2B-сценарии, UX). Названия клиентов не публикую: NDA и
-            дилерские ограничения.
+    <section id="cases" className="px-4 py-24 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-[1200px]">
+        <div className="mb-12 flex flex-col gap-4 sm:mb-14 sm:flex-row sm:items-end sm:justify-between">
+          <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
+            Кейсы
+          </h2>
+          <p className="max-w-sm text-sm leading-relaxed text-muted">
+            Названия клиентов не публикую: NDA и дилерские ограничения.
           </p>
         </div>
 
-        <div className="border-y border-cream/10">
+        <div className="border-y border-line">
           {cases.map((item) => {
             const isOpen = open === item.slug;
             return (
-              <article key={item.slug} className="border-b border-cream/10 last:border-b-0">
+              <article key={item.slug} className="border-b border-line last:border-b-0">
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? "" : item.slug)}
-                  className="flex w-full items-start gap-4 py-6 text-left sm:items-center sm:gap-8 sm:py-8 lg:px-8"
+                  className="flex w-full items-start gap-4 py-6 text-left sm:items-center sm:gap-8 sm:py-8"
                   aria-expanded={isOpen}
                 >
-                  <span className="w-10 shrink-0 font-mono text-xs text-lime sm:w-14">
-                    {item.number}
-                  </span>
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-display text-2xl leading-tight tracking-tight text-cream sm:text-3xl lg:text-4xl">
+                    <h3 className="font-display text-2xl leading-tight tracking-tight text-ink sm:text-3xl">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm text-cream/45">
-                      {[item.niche, item.region, item.cms, item.period]
-                        .filter(Boolean)
-                        .join(" · ")}
+                    <p className="mt-2 text-sm text-muted">
+                      {[item.niche, item.region, item.cms, item.period].filter(Boolean).join(" · ")}
                     </p>
                   </div>
                   <span
                     className={cn(
-                      "mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cream/15 transition-transform duration-500",
-                      isOpen && "rotate-45 border-lime text-lime",
+                      "mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-ink transition-all duration-500",
+                      isOpen && "rotate-45 border-accent bg-accent text-white",
                     )}
                   >
                     <Plus size={18} />

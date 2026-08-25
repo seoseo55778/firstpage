@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 const links = [
   { href: "#cases", label: "Кейсы" },
-  { href: "#skills", label: "Навыки" },
-  { href: "#process", label: "Как работаю" },
+  { href: "#skills", label: "Компетенции" },
+  { href: "#process", label: "Процесс" },
   { href: "#contact", label: "Контакт" },
 ];
 
@@ -33,16 +33,14 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
-        scrolled || open ? "bg-ink/80 backdrop-blur-xl" : "bg-transparent",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        scrolled || open ? "bg-paper/90 shadow-[0_1px_0_var(--line)] backdrop-blur-xl" : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-4 sm:h-[4.5rem] sm:px-8">
-        <a href="#top" className="group flex items-baseline gap-3">
-          <span className="font-display text-lg tracking-tight text-cream sm:text-xl">
-            ГГ
-          </span>
-          <span className="hidden text-xs uppercase tracking-[0.22em] text-cream/45 sm:inline">
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between px-4 sm:h-[4.5rem] sm:px-8">
+        <a href="#top" className="flex items-baseline gap-3">
+          <span className="font-display text-lg tracking-tight text-ink sm:text-xl">ГГ</span>
+          <span className="hidden text-xs uppercase tracking-[0.2em] text-muted sm:inline">
             {site.name}
           </span>
         </a>
@@ -51,7 +49,7 @@ export function Header() {
             <a
               key={l.href}
               href={l.href}
-              className="text-[13px] uppercase tracking-[0.16em] text-cream/55 transition-colors hover:text-cream"
+              className="text-[13px] uppercase tracking-[0.14em] text-muted transition-colors hover:text-ink"
             >
               {l.label}
             </a>
@@ -60,14 +58,14 @@ export function Header() {
             href={site.telegram}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-10 items-center rounded-full bg-lime px-5 text-[13px] font-medium text-ink transition hover:bg-lime-hot"
+            className="tg-btn inline-flex h-10 items-center rounded-full px-5 text-[13px] font-medium"
           >
             Написать в Telegram
           </a>
         </nav>
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-cream/15 text-cream md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink md:hidden"
           aria-label={open ? "Закрыть меню" : "Открыть меню"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -75,14 +73,14 @@ export function Header() {
         </button>
       </div>
       {open && (
-        <div className="border-t border-cream/10 bg-ink px-4 py-8 md:hidden">
+        <div className="border-t border-line bg-paper px-4 py-8 md:hidden">
           <nav className="flex flex-col gap-5">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-3xl text-cream"
+                className="font-display text-3xl text-ink"
               >
                 {l.label}
               </a>
@@ -91,7 +89,7 @@ export function Header() {
               href={site.telegram}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex h-12 items-center justify-center rounded-full bg-lime text-sm font-medium text-ink"
+              className="tg-btn mt-4 inline-flex h-14 items-center justify-center rounded-full text-base font-medium"
             >
               Написать в Telegram
             </a>

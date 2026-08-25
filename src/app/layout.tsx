@@ -42,7 +42,6 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} ${unbounded.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        <div className="grain" aria-hidden />
         {children}
       </body>
     </html>
