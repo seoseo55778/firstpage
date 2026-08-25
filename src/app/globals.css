@@ -99,8 +99,8 @@ body {
 }
 
 .tg-btn {
-  background: var(--ink);
-  color: #fff;
+  background: var(--accent-soft);
+  color: var(--ink);
   transition:
     background 0.35s ease,
     color 0.35s ease,
@@ -109,8 +109,8 @@ body {
 }
 
 .tg-btn:hover {
-  background: var(--accent);
+  background: var(--ink);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 16px 32px rgba(36, 87, 255, 0.24);
+  box-shadow: 0 16px 32px rgba(34, 34, 34, 0.18);
 }
