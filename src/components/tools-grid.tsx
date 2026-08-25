@@ -5,13 +5,8 @@ function ToolTag({ tool }: { tool: (typeof tools)[number] }) {
   return (
     <span
       tabIndex={0}
-      className="tool-tag inline-flex items-center rounded-full px-6 py-3.5 text-base font-semibold text-[#111827] sm:px-8 sm:py-4 sm:text-lg"
-      style={
-        {
-          backgroundColor: tool.bg,
-          "--tool-hover-bg": tool.hover,
-        } as CSSProperties & Record<"--tool-hover-bg", string>
-      }
+      className="tool-tag inline-flex items-center rounded-full px-6 py-3.5 text-base font-semibold text-[#F8F8F8] sm:px-8 sm:py-4 sm:text-lg"
+      style={{ backgroundColor: tool.bg } as CSSProperties}
     >
       {tool.name}
     </span>

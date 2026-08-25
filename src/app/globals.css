@@ -554,18 +554,18 @@ body {
 
 .tool-tag {
   outline: none;
+  border: 1px solid transparent;
   transition:
     transform 200ms ease,
     box-shadow 200ms ease,
-    background 200ms ease;
+    border-color 200ms ease;
 }
 
 .tool-tag:hover,
 .tool-tag:focus-visible {
-  background: var(--tool-hover-bg) !important;
-  color: #111827;
   transform: translateY(-3px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+  border-color: rgba(255, 255, 255, 0.28);
   outline: none;
 }
 
