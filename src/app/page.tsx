@@ -98,7 +98,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1200px]">
           <Reveal>
             <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
-              Как устроен процесс
+              Этапы работы
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-4 md:grid-cols-2">

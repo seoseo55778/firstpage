@@ -59,13 +59,10 @@ export function Cases() {
   return (
     <section id="cases" className="px-4 py-24 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-[1200px]">
-        <div className="mb-12 flex flex-col gap-4 sm:mb-14 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mb-12 sm:mb-14">
           <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
             Кейсы
           </h2>
-          <p className="max-w-sm text-sm leading-relaxed text-muted">
-            Названия клиентов не публикую: NDA и дилерские ограничения.
-          </p>
         </div>
 
         <div className="border-y border-line">
@@ -83,9 +80,6 @@ export function Cases() {
                     <h3 className="font-display text-2xl leading-tight tracking-tight text-ink sm:text-3xl">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted">
-                      {[item.niche, item.region, item.cms, item.period].filter(Boolean).join(" · ")}
-                    </p>
                   </div>
                   <span
                     className={cn(

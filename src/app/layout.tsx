@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Manrope, Unbounded } from "next/font/google";
+import { Geologica, Geist_Mono } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const geologica = Geologica({
+  variable: "--font-geologica",
   subsets: ["latin", "cyrillic"],
-});
-
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
-  subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -40,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${manrope.variable} ${unbounded.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${geologica.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
       </body>
