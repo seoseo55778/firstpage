@@ -32,10 +32,11 @@ export default function Home() {
       <section className="relative px-4 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-36">
         <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-[1.25fr_0.75fr]">
           <Reveal>
-            <h1 className="font-display text-[clamp(2.4rem,5.4vw,5rem)] leading-[0.94] tracking-tight text-ink">
-              SEO, <span className="text-accent-soft">которое растёт</span>
-              <br />
-              в заявки
+            <h1 className="font-display text-[clamp(2.2rem,4.8vw,4.35rem)] leading-[0.96] tracking-tight text-ink">
+              <span className="block whitespace-nowrap">
+                SEO, <span className="text-accent-soft">которое растёт</span>
+              </span>
+              <span className="block">в заявки</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
               {site.hero.lead}
