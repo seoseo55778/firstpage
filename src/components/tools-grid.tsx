@@ -20,7 +20,7 @@ function ToolTag({ tool }: { tool: (typeof tools)[number] }) {
 
 export function ToolsGrid() {
   return (
-    <section aria-label="Мой рабочий стек" className="px-4 py-20 sm:px-8">
+    <section id="stack" aria-label="Мой рабочий стек" className="px-4 py-20 sm:px-8">
       <div className="mx-auto max-w-[1200px]">
         <h2 className="font-display text-4xl tracking-tight text-ink sm:text-5xl">
           Мой рабочий стек

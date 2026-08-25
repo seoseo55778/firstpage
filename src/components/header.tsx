@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 const links = [
   { href: "#cases", label: "Кейсы" },
   { href: "#skills", label: "Компетенции" },
-  { href: "#process", label: "Процесс" },
-  { href: "#contact", label: "Контакт" },
+  { href: "#stack", label: "Стек" },
+  { href: "#contact", label: "Контакты" },
 ];
 
 export function Header() {

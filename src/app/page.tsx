@@ -1,5 +1,6 @@
 import { Cases } from "@/components/cases";
 import { Header } from "@/components/header";
+import { ProjectSpheres } from "@/components/project-spheres";
 import { Reveal } from "@/components/reveal";
 import { Skills } from "@/components/skills";
 import { ToolsGrid } from "@/components/tools-grid";
@@ -76,14 +77,17 @@ export default function Home() {
                 />
               </div>
               <div className="absolute -bottom-5 left-1/2 w-[82%] -translate-x-1/2 rounded-2xl border border-line bg-white/92 px-5 py-4 shadow-[0_18px_42px_rgba(34,34,34,0.10)] backdrop-blur">
-                <p className="text-sm font-semibold text-ink">3 года в SEO</p>
-                <p className="mt-1 text-xs text-muted">Опыт в агентстве, B2B и e-commerce</p>
+                <p className="text-sm font-semibold text-ink">SEO-специалист</p>
+                <p className="mt-1 text-xs text-muted">
+                  Комплексное продвижение сайтов в Яндекс и Google
+                </p>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
+      <ProjectSpheres />
       <Skills />
       <Cases />
       <ToolsGrid />
