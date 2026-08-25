@@ -25,14 +25,14 @@ export const site = {
 } as const;
 
 export const projectSpheres = [
-  { name: "Промышленность", bg: "#D8F000", shadow: "rgba(180, 200, 0, 0.35)", grow: 1.25 },
-  { name: "Строительство", bg: "#F5C518", shadow: "rgba(200, 150, 0, 0.32)", grow: 1.1 },
-  { name: "Интернет-магазины", bg: "#FF7A59", shadow: "rgba(220, 90, 60, 0.32)", grow: 1.6 },
-  { name: "Телеком", bg: "#2DD4BF", shadow: "rgba(20, 160, 140, 0.3)", grow: 1.05 },
-  { name: "Автобизнес", bg: "#C4B5FD", shadow: "rgba(140, 110, 220, 0.3)", grow: 1.2 },
-  { name: "Финансы", bg: "#7DD3FC", shadow: "rgba(40, 150, 200, 0.28)", grow: 1.0 },
-  { name: "Гостиницы", bg: "#4ADE80", shadow: "rgba(40, 170, 90, 0.3)", grow: 1.1 },
-  { name: "Правовые сервисы", bg: "#FB7185", shadow: "rgba(220, 70, 100, 0.3)", grow: 1.55 },
+  { name: "Промышленность", bg: "#E9FF24", grow: 1.25 },
+  { name: "Строительство", bg: "#B8A7FF", grow: 1.1 },
+  { name: "Интернет-магазины", bg: "#E9FF24", grow: 1.6 },
+  { name: "Телеком", bg: "#B8A7FF", grow: 1.05 },
+  { name: "Автобизнес", bg: "#B8A7FF", grow: 1.2 },
+  { name: "Финансы", bg: "#E9FF24", grow: 1.0 },
+  { name: "Гостиницы", bg: "#B8A7FF", grow: 1.1 },
+  { name: "Правовые сервисы", bg: "#E9FF24", grow: 1.55 },
 ] as const;
 
 export const projectSphereRows = [

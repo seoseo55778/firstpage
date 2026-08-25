@@ -544,7 +544,7 @@ body {
 .sphere-tag:hover,
 .sphere-tag:focus-visible {
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px var(--sphere-shadow, rgba(0, 0, 0, 0.12));
+  box-shadow: 0 10px 24px rgba(28, 28, 28, 0.1);
 }
 
 .sphere-tag:focus-visible {

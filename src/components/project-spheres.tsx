@@ -15,7 +15,6 @@ function SphereTag({
       style={
         {
           backgroundColor: sphere.bg,
-          "--sphere-shadow": sphere.shadow,
           ...(fillRow
             ? {
                 flexGrow: sphere.grow,
@@ -23,7 +22,7 @@ function SphereTag({
                 flexBasis: 0,
               }
             : null),
-        } as CSSProperties & Record<"--sphere-shadow", string>
+        } as CSSProperties
       }
     >
       {sphere.name}
