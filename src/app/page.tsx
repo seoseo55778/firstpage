@@ -149,14 +149,17 @@ export default function Home() {
           <p>
             © {new Date().getFullYear()} {site.name}
           </p>
-          <div className="flex gap-6">
-            <a className="hover:text-ink" href={site.telegram} target="_blank" rel="noopener noreferrer">
-              Telegram
-            </a>
-            <a className="hover:text-ink" href={site.instagram} target="_blank" rel="noopener noreferrer">
-              Instagram
-            </a>
-          </div>
+          <a
+            href={site.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition hover:border-ink hover:bg-ink hover:text-white"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M21.9 4.3c.3-1.1-.8-2-1.8-1.6L2.7 9.5c-1.1.4-1.1 2 .1 2.3l4.6 1.4 1.8 5.7c.3 1 1.6 1.2 2.2.4l2.6-3.3 4.8 3.5c.8.6 2 .2 2.3-.8l3.8-14.4ZM9.3 13.4l8.8-5.5c.3-.2.6.2.4.5l-7.1 6.8-.3 3.4-1.8-5.2Z" />
+            </svg>
+          </a>
         </div>
       </footer>
     </div>
