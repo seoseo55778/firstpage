@@ -1,5 +1,4 @@
 import { Cases } from "@/components/cases";
-import { CustomCursor } from "@/components/custom-cursor";
 import { Header } from "@/components/header";
 import { Reveal } from "@/components/reveal";
 import { Skills } from "@/components/skills";
@@ -28,7 +27,6 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <CustomCursor />
       <Header />
 
       <section className="relative px-4 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-36">

@@ -126,7 +126,6 @@ export function Cases() {
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? "" : item.slug)}
-                  data-cursor="case"
                   className="flex w-full items-start gap-4 py-6 text-left sm:items-center sm:gap-8 sm:py-8"
                   aria-expanded={isOpen}
                 >
