@@ -16,7 +16,7 @@ export function ToolsGrid() {
               style={
                 {
                   "--hover-bg": tool.color,
-                  "--hover-text": tool.textColor ?? "#ffffff",
+                  "--hover-text": "textColor" in tool ? tool.textColor : "#ffffff",
                 } as CSSProperties & Record<"--hover-bg" | "--hover-text", string>
               }
             >
