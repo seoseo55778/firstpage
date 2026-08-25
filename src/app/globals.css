@@ -483,7 +483,8 @@ body {
   outline: none;
   transition:
     transform 200ms ease,
-    box-shadow 200ms ease;
+    box-shadow 200ms ease,
+    background 200ms ease;
 }
 
 .tool-tag:hover,
@@ -492,11 +493,7 @@ body {
   color: #111827;
   transform: translateY(-3px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
-}
-
-.tool-tag:focus-visible {
-  outline: 3px solid var(--accent-soft);
-  outline-offset: 4px;
+  outline: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
