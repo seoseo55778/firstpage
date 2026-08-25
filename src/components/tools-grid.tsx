@@ -9,7 +9,7 @@ export function ToolsGrid() {
           Мой рабочий стек
         </h2>
         <div className="mt-12 flex w-full flex-wrap items-center justify-start gap-x-5 gap-y-4">
-          {tools.map((tool, index) => (
+          {tools.map((tool) => (
             <span
               key={tool.name}
               tabIndex={0}

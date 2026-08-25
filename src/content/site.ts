@@ -250,7 +250,7 @@ export const cases: CaseStudy[] = [
       "Тексты: анализ конкурентов, адаптация, вёрстка и наполнение в CMS своими руками.",
       "robots.txt, динамический sitemap, Schema.org (Organization, BreadcrumbList, Service).",
       "Склейка зеркал HTTPS без WWW, вычистка дублей и служебных URL.",
-      "WebP, скрипты, mobile-first. Яндекс Вебмастер, GSC, регион.",
+      "WebP, скрипты, mobile-first. Яндекс Вебмастер, Google Search Console, регион.",
       "Цели: клики по контактам и формы. ТЗ на квизы, сквозные формы и коммерческие блоки в услугах.",
     ],
     results: [
