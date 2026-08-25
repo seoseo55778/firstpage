@@ -116,6 +116,13 @@ body {
   box-shadow: 0 18px 40px rgba(30, 28, 24, 0.1);
 }
 
+.tool-tag:hover {
+  background: var(--hover-bg);
+  color: var(--hover-text);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.12);
+}
+
 .tg-btn {
   background: var(--accent-soft);
   color: var(--ink);

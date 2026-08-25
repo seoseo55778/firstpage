@@ -131,23 +131,28 @@ export const competencies = [
   },
 ] as const;
 
-export const toolGroups = [
-  {
-    title: "Аналитика и поиск",
-    tools: ["Ahrefs", "Keys.so", "GA4", "Яндекс.Метрика", "GSC", "Яндекс.Вебмастер", "Топвизор"],
-  },
-  {
-    title: "Техническое SEO и парсинг",
-    tools: ["Screaming Frog", "PageSpeed Insights", "KeyCollector", "Key Assort", "WordKeeper"],
-  },
-  {
-    title: "Автоматизация и AI",
-    tools: ["n8n", "Cursor Pro", "Python (SEO-скрипты)", "Yandex Wordstat API"],
-  },
-  {
-    title: "Проектирование и UX",
-    tools: ["Figma", "Miro"],
-  },
+export const tools = [
+  { name: "Screaming Frog", color: "#10B981" },
+  { name: "Ahrefs", color: "#FF5C35" },
+  { name: "Serpstat", color: "#6D28D9" },
+  { name: "Keys.so", color: "#2563EB" },
+  { name: "PageSpeed Insights", color: "#4285F4" },
+  { name: "n8n", color: "#10B981" },
+  { name: "Cursor Pro", color: "#111827" },
+  { name: "Claude Code", color: "#6366F1" },
+  { name: "Codex", color: "#111827" },
+  { name: "Grok", color: "#6366F1" },
+  { name: "Python (SEO-скрипты)", color: "#3776AB" },
+  { name: "Yandex Wordstat API", color: "#FC3F1D" },
+  { name: "GA4", color: "#E37400" },
+  { name: "Яндекс.Метрика", color: "#FC3F1D" },
+  { name: "GSC", color: "#34A853" },
+  { name: "Яндекс.Вебмастер", color: "#FC3F1D" },
+  { name: "Топвизор", color: "#3D8BDB" },
+  { name: "WordKeeper", color: "#00897B" },
+  { name: "Key Assort", color: "#D35400" },
+  { name: "Figma", color: "#F24E1E" },
+  { name: "Miro", color: "#C9A227", textColor: "#111827" },
 ] as const;
 
 export type CaseStudy = {
