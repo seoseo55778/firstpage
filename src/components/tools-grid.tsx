@@ -1,4 +1,5 @@
 import { tools } from "@/content/site";
+import type { CSSProperties } from "react";
 
 const desktopRows = [
   ["Manus", "ChatGPT", "Gemini", "Semrush", "Google Search Console", "Google Cloud Platform"],
@@ -17,8 +18,13 @@ function ToolTag({ name }: { name: string }) {
   return (
     <span
       tabIndex={0}
-      className="tool-tag inline-flex items-center rounded-full px-6 py-3.5 text-base font-semibold text-white sm:px-8 sm:py-4 sm:text-lg"
-      style={{ backgroundColor: tool.bg }}
+      className="tool-tag inline-flex items-center rounded-full px-6 py-3.5 text-base font-semibold text-[#111827] sm:px-8 sm:py-4 sm:text-lg"
+      style={
+        {
+          backgroundColor: tool.bg,
+          "--tool-hover-bg": tool.hover,
+        } as CSSProperties & Record<"--tool-hover-bg", string>
+      }
     >
       {tool.name}
     </span>
