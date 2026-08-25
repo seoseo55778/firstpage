@@ -32,10 +32,10 @@ function SphereTag({
 
 export function ProjectSpheres() {
   return (
-    <section id="spheres" className="px-4 py-20 sm:px-8 sm:py-24">
+    <section id="spheres" className="relative bg-paper px-4 py-20 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-[1200px]">
         <h2 className="font-display text-4xl tracking-tight text-ink sm:text-5xl">
-          Опыт в разных сферах
+          Сферы проектов
         </h2>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
           Работал с проектами, где важны сложный спрос, понятная структура сайта и
