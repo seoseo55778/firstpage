@@ -51,6 +51,38 @@ body {
   color: #fff;
 }
 
+.skill-card {
+  transition:
+    background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-card__title,
+.skill-card__item {
+  transition: color 0.35s ease;
+}
+
+.skill-card:hover,
+.skill-card:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-6px);
+  box-shadow: 0 22px 50px rgba(255, 33, 89, 0.16);
+}
+
+.skill-card:hover .skill-card__title,
+.skill-card:focus-visible .skill-card__title {
+  color: #fff;
+}
+
+.skill-card:hover .skill-card__item,
+.skill-card:focus-visible .skill-card__item {
+  color: rgba(255, 255, 255, 0.86);
+}
+
 .process-card {
   transition:
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
