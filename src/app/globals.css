@@ -462,18 +462,54 @@ body {
   box-shadow: 0 18px 40px rgba(30, 28, 24, 0.1);
 }
 
+.sphere-cloud-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+}
+
+@media (min-width: 640px) {
+  .sphere-cloud-mobile {
+    gap: 14px 16px;
+  }
+}
+
+.sphere-cloud-desktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .sphere-cloud-desktop {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+}
+
+.sphere-row {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  gap: 18px;
+}
+
 .sphere-tag {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  height: 68px;
   border-radius: 999px;
-  padding: 0.95rem 1.55rem;
-  font-size: 1.05rem;
+  padding: 0 28px;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1;
   color: #111111;
+  text-align: center;
+  white-space: nowrap;
   outline: none;
   cursor: default;
+  box-sizing: border-box;
   transition:
     transform 200ms ease,
     box-shadow 200ms ease;
@@ -481,15 +517,20 @@ body {
 
 @media (min-width: 640px) {
   .sphere-tag {
-    padding: 1.1rem 1.85rem;
-    font-size: 1.2rem;
+    height: 72px;
+    padding: 0 32px;
+    font-size: 1.25rem;
+    font-weight: 600;
   }
 }
 
 @media (min-width: 1024px) {
   .sphere-tag {
-    padding: 1.2rem 2.1rem;
-    font-size: 1.28rem;
+    height: 74px;
+    min-width: 0;
+    padding: 0 34px;
+    font-size: 1.3125rem;
+    font-weight: 600;
   }
 }
 
