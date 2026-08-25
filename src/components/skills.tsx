@@ -16,10 +16,9 @@ function CompetencyCard({ item }: { item: Competency }) {
 
   const inner = (
     <>
-      <div aria-hidden className="skill-card__index">
-        <span className="skill-card__marker" />
-        <span className="skill-card__num">{item.n}</span>
-      </div>
+      <span aria-hidden className="skill-card__num">
+        {item.n}
+      </span>
       <h3 className="skill-card__title font-display">{item.title}</h3>
       <p className="skill-card__desc">{item.description}</p>
       <ul className="skill-card__list">
