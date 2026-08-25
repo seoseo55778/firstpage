@@ -466,19 +466,26 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 12px 14px;
+  margin-top: 2.5rem;
 }
 
 @media (min-width: 640px) {
   .sphere-cloud-mobile {
     gap: 14px 16px;
+    margin-top: 3rem;
   }
 }
 
 .sphere-cloud-desktop {
   display: none;
+  margin-top: 3rem;
 }
 
 @media (min-width: 1024px) {
+  .sphere-cloud-mobile {
+    display: none;
+  }
+
   .sphere-cloud-desktop {
     display: flex;
     flex-direction: column;

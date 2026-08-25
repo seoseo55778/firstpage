@@ -43,13 +43,13 @@ export function ProjectSpheres() {
           измеримый рост из органического поиска.
         </p>
 
-        <div className="sphere-cloud-mobile mt-10 sm:mt-12 lg:hidden">
+        <div className="sphere-cloud-mobile">
           {projectSpheres.map((sphere) => (
             <SphereTag key={sphere.name} sphere={sphere} />
           ))}
         </div>
 
-        <div className="sphere-cloud-desktop mt-12">
+        <div className="sphere-cloud-desktop">
           {projectSphereRows.map((row, i) => (
             <div key={i} className="sphere-row">
               {row.map((sphere) => (
