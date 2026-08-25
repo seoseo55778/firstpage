@@ -8,7 +8,7 @@ const desktopRows = [
   ["Key Assort", "Figma", "Miro", "Google Indexing API", "SAPE", "Miralinks"],
 ];
 
-const toolsByName = new Map(tools.map((tool) => [tool.name, tool]));
+const toolsByName = new Map<string, (typeof tools)[number]>(tools.map((tool) => [tool.name, tool]));
 
 function ToolTag({ name }: { name: string }) {
   const tool = toolsByName.get(name);
