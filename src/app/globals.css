@@ -57,6 +57,13 @@ body {
   font-style: italic;
 }
 
+.hero-fill {
+  color: var(--accent-soft);
+  -webkit-text-stroke: 1px var(--ink);
+  text-stroke: 1px var(--ink);
+  font-style: italic;
+}
+
 ::selection {
   background: var(--accent);
   color: #fff;
