@@ -119,6 +119,7 @@ export const competencies = [
       "Выводы, рекомендации и план работ на следующий период",
     ],
     accent: "#EAB308",
+    onAccent: "#1A1A1A",
   },
 ] as const;
 
