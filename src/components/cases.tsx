@@ -2,9 +2,10 @@
 
 import { cases, type CaseStudy } from "@/content/site";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Expand, X } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
 
 function formatInt(n: number) {
@@ -71,7 +72,95 @@ function CountUp({ value }: { value: string }) {
   return <div ref={ref}>{display}</div>;
 }
 
-function CaseBody({ item }: { item: CaseStudy }) {
+type CaseImage = CaseStudy["images"][number];
+
+function CaseLightbox({
+  image,
+  onClose,
+}: {
+  image: CaseImage | null;
+  onClose: () => void;
+}) {
+  const titleId = useId();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!image) return;
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [image, onClose]);
+
+  if (!mounted) return null;
+
+  return createPortal(
+    <AnimatePresence>
+      {image ? (
+        <motion.div
+          className="case-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={titleId}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={onClose}
+        >
+          <button type="button" className="case-lightbox__close" aria-label="Закрыть" onClick={onClose}>
+            <X size={20} />
+          </button>
+          <motion.div
+            className="case-lightbox__panel"
+            initial={{ opacity: 0, y: 18, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 12, scale: 0.98 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <p id={titleId} className="sr-only">
+              {image.alt}
+            </p>
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={1800}
+              height={1200}
+              className="case-lightbox__image"
+              sizes="96vw"
+              priority
+            />
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>,
+    document.body,
+  );
+}
+
+function CaseBody({
+  item,
+  onOpenImage,
+}: {
+  item: CaseStudy;
+  onOpenImage: (image: CaseImage) => void;
+}) {
+  const count = item.images.length;
+
   return (
     <div className="case-panel">
       <div className="case-body">
@@ -103,12 +192,38 @@ function CaseBody({ item }: { item: CaseStudy }) {
               </div>
             ))}
           </div>
-          {item.images.map((img) => (
-            <div key={img.src} className="case-chart">
-              <Image src={img.src} alt={img.alt} width={1200} height={720} className="h-auto w-full" />
-            </div>
-          ))}
         </div>
+      </div>
+
+      <div
+        className={cn(
+          "case-gallery",
+          count === 1 && "is-one",
+          count === 2 && "is-two",
+          count >= 3 && "is-three",
+        )}
+      >
+        {item.images.map((img) => (
+          <button
+            key={img.src}
+            type="button"
+            className="case-chart"
+            onClick={() => onOpenImage(img)}
+            aria-label={`Открыть: ${img.alt}`}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={1200}
+              height={720}
+              className="case-chart__image"
+              sizes="(max-width: 1024px) 100vw, 33vw"
+            />
+            <span className="case-chart__hint" aria-hidden>
+              <Expand size={16} />
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -116,6 +231,7 @@ function CaseBody({ item }: { item: CaseStudy }) {
 
 export function Cases() {
   const [open, setOpen] = useState<string>(cases[0].slug);
+  const [lightbox, setLightbox] = useState<CaseImage | null>(null);
 
   return (
     <section id="cases" className="px-4 py-24 sm:px-8 sm:py-28">
@@ -166,7 +282,7 @@ export function Cases() {
                       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
-                      <CaseBody item={item} />
+                      <CaseBody item={item} onOpenImage={setLightbox} />
                     </motion.div>
                   ) : null}
                 </AnimatePresence>
@@ -175,6 +291,8 @@ export function Cases() {
           })}
         </div>
       </div>
+
+      <CaseLightbox image={lightbox} onClose={() => setLightbox(null)} />
     </section>
   );
 }
