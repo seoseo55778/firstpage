@@ -252,12 +252,25 @@ body {
   .skill-card__title {
     font-size: 1.7rem;
   }
+
+  /* Equal title/description zones so lists start on one baseline per row. */
+  .skill-card__head {
+    min-height: calc(1.7rem * 1.15 * 2);
+  }
+
+  .skill-card__desc {
+    min-height: calc(0.98rem * 1.55 * 4);
+  }
 }
 
 @media (min-width: 1280px) {
   .skill-card__title {
     font-size: 1.42rem;
     line-height: 1.16;
+  }
+
+  .skill-card__head {
+    min-height: calc(1.42rem * 1.16 * 2);
   }
 }
 

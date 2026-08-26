@@ -8,7 +8,7 @@ type Competency = (typeof competencies)[number] & { href?: string };
 
 function CompetencyCard({ item }: { item: Competency }) {
   const className =
-    "skill-card group relative flex h-full min-h-[320px] flex-col rounded-[24px] border border-line bg-surface px-6 pb-6 pt-[8.75rem] focus-visible:outline-none sm:min-h-[340px] sm:px-7 sm:pb-7 sm:pt-36";
+    "skill-card group relative flex h-full flex-col rounded-[24px] border border-line bg-surface px-6 pb-6 pt-[8.75rem] focus-visible:outline-none sm:px-7 sm:pb-7 sm:pt-36 md:min-h-[340px]";
   const style = {
     "--card-accent": item.accent,
     "--card-on-accent": "onAccent" in item ? item.onAccent : "#ffffff",
@@ -19,7 +19,9 @@ function CompetencyCard({ item }: { item: Competency }) {
       <span aria-hidden className="skill-card__num">
         {item.n}
       </span>
-      <h3 className="skill-card__title font-display">{item.title}</h3>
+      <div className="skill-card__head">
+        <h3 className="skill-card__title font-display">{item.title}</h3>
+      </div>
       <p className="skill-card__desc">{item.description}</p>
       <ul className="skill-card__list">
         {item.items.map((line) => (
