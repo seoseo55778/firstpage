@@ -191,9 +191,11 @@ function CaseLightbox({
 function CaseBody({
   item,
   onOpenImage,
+  showMedia,
 }: {
   item: CaseStudy;
   onOpenImage: (image: CaseImage) => void;
+  showMedia: boolean;
 }) {
   const count = item.images.length;
 
@@ -223,7 +225,7 @@ function CaseBody({
             {item.results.map((r) => (
               <div key={r.label} className="case-metrics__item">
                 <div className="case-metrics__value font-display">
-                  <CountUp value={r.value} />
+                  {showMedia ? <CountUp value={r.value} /> : r.value}
                 </div>
                 <div className="case-metrics__label">{r.label}</div>
               </div>
@@ -232,36 +234,39 @@ function CaseBody({
         </div>
       </div>
 
-      <div
-        className={cn(
-          "case-gallery",
-          count === 1 && "is-one",
-          count === 2 && "is-two",
-          count >= 3 && "is-three",
-        )}
-      >
-        {item.images.map((img) => (
-          <button
-            key={img.src}
-            type="button"
-            className="case-chart"
-            onClick={() => onOpenImage(img)}
-            aria-label={`Открыть: ${img.alt}`}
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={1200}
-              height={720}
-              className="case-chart__image"
-              sizes="(max-width: 1024px) 100vw, 33vw"
-            />
-            <span className="case-chart__hint" aria-hidden>
-              <Expand size={16} />
-            </span>
-          </button>
-        ))}
-      </div>
+      {showMedia ? (
+        <div
+          className={cn(
+            "case-gallery",
+            count === 1 && "is-one",
+            count === 2 && "is-two",
+            count >= 3 && "is-three",
+          )}
+        >
+          {item.images.map((img) => (
+            <button
+              key={img.src}
+              type="button"
+              className="case-chart"
+              onClick={() => onOpenImage(img)}
+              aria-label={`Открыть: ${img.alt}`}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={1200}
+                height={720}
+                className="case-chart__image"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                loading="lazy"
+              />
+              <span className="case-chart__hint" aria-hidden>
+                <Expand size={16} />
+              </span>
+            </button>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -292,6 +297,8 @@ export function Cases() {
                   onClick={() => setOpen(isOpen ? "" : item.slug)}
                   className="case-row"
                   aria-expanded={isOpen}
+                  aria-controls={`case-panel-${item.slug}`}
+                  id={`case-trigger-${item.slug}`}
                 >
                   <span className="case-row__copy">
                     <h3 className="case-row__title font-display">{item.title}</h3>
@@ -312,19 +319,21 @@ export function Cases() {
                     </motion.span>
                   </span>
                 </button>
-                <AnimatePresence initial={false}>
-                  {isOpen ? (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <CaseBody item={item} onOpenImage={setLightbox} />
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
+                <motion.div
+                  id={`case-panel-${item.slug}`}
+                  role="region"
+                  aria-labelledby={`case-trigger-${item.slug}`}
+                  aria-hidden={!isOpen}
+                  initial={false}
+                  animate={{
+                    height: isOpen ? "auto" : 0,
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <CaseBody item={item} onOpenImage={setLightbox} showMedia={isOpen} />
+                </motion.div>
               </article>
             );
           })}

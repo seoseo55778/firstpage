@@ -5,10 +5,12 @@ import { Reveal } from "@/components/reveal";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { Skills } from "@/components/skills";
 import { ToolsGrid } from "@/components/tools-grid";
-import { process, site } from "@/content/site";
+import { process as workStages, site } from "@/content/site";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -16,9 +18,9 @@ const jsonLd = {
   name: site.name,
   jobTitle: site.role,
   description: site.hero.lead,
-  url: "https://t.me/gordeigezha",
+  url: siteUrl,
   sameAs: [site.telegram, site.instagram],
-  image: "/gordei.png",
+  image: `${siteUrl}/gordei.webp`,
   knowsAbout: ["SEO", "поисковая оптимизация", "контент-стратегия", "техническое SEO"],
 };
 
@@ -69,11 +71,12 @@ export default function Home() {
             <div className="relative mx-auto max-w-[340px] lg:ml-auto">
               <div className="overflow-hidden rounded-[32px] bg-surface shadow-[0_24px_70px_rgba(34,34,34,0.10)]">
                 <Image
-                  src="/gordei.png"
-                  alt="Гордей Гежа"
+                  src="/gordei.webp"
+                  alt={`${site.name} — ${site.role}`}
                   width={811}
                   height={745}
                   priority
+                  sizes="(max-width: 1024px) 340px, 340px"
                   className="h-auto w-full object-cover object-[center_18%]"
                 />
               </div>
@@ -101,7 +104,7 @@ export default function Home() {
             </h2>
           </Reveal>
           <div className="mt-12 grid gap-4 md:grid-cols-2">
-            {process.map((p, i) => {
+            {workStages.map((p, i) => {
               return (
                 <Reveal key={p.title} delay={i * 0.06}>
                   <article

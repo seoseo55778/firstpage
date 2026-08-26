@@ -2,8 +2,6 @@
 
 Одностраничный сайт SEO-специалиста: кейсы, компетенции, процесс и кнопка в Telegram.
 
-Светлая тёплая гамма, фото в шапке, ховеры на карточках компетенций.
-
 ## Запуск
 
 ```bash
@@ -13,4 +11,9 @@ npm run dev -- --port 43141 --hostname 0.0.0.0
 
 Откройте [http://localhost:43141](http://localhost:43141).
 
-Тексты — в `src/content/site.ts`, фото — `public/gordei.png`. Telegram: `https://t.me/gordeigezha`.
+## Контент и SEO
+
+- Тексты — `src/content/site.ts`
+- Фото — `public/gordei.webp`
+- Production URL для canonical / sitemap / OG: переменная `NEXT_PUBLIC_SITE_URL` (по умолчанию `https://firstpage.vercel.app`)
+- Telegram: `https://t.me/gordeigezha`
