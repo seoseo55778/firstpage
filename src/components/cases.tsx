@@ -7,19 +7,30 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
+function formatInt(n: number) {
+  return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
+}
+
 function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [display, setDisplay] = useState(value.match(/\d/) ? "0" : value);
+  const numeric = /^([×+]?)([\d\s\u00a0]+(?:[,.]\d+)?)(.*)$/.test(value);
+  const [display, setDisplay] = useState(numeric ? "0" : value);
 
   useEffect(() => {
-    const match = value.match(/^([×+]?)(\d+(?:[,.]\d+)?)(.*)$/);
+    const match = value.match(/^([×+]?)([\d\s\u00a0]+(?:[,.]\d+)?)(.*)$/);
     if (!match) {
       setDisplay(value);
       return;
     }
 
     const [, prefix, rawNumber, suffix] = match;
-    const target = Number(rawNumber.replace(",", "."));
+    const compact = rawNumber.replace(/[\s\u00a0]/g, "");
+    const target = Number(compact.replace(",", "."));
+    if (!Number.isFinite(target)) {
+      setDisplay(value);
+      return;
+    }
+
     let frame = 0;
     let started = false;
 
@@ -35,9 +46,9 @@ function CountUp({ value }: { value: string }) {
           const eased = 1 - Math.pow(1 - progress, 3);
           const current = target * eased;
           const formatted =
-            rawNumber.includes(",") || rawNumber.includes(".")
+            compact.includes(",") || compact.includes(".")
               ? current.toFixed(1).replace(".", ",")
-              : String(Math.round(current));
+              : formatInt(current);
 
           setDisplay(`${prefix}${formatted}${suffix}`);
           if (progress < 1) frame = requestAnimationFrame(tick);
@@ -131,9 +142,19 @@ export function Cases() {
                 >
                   <h3 className="case-row__title font-display">{item.title}</h3>
                   <span className="case-row__action" aria-hidden>
-                    <span className={cn("case-row__btn", isOpen && "is-open")}>
+                    <motion.span
+                      className={cn("case-row__btn", isOpen && "is-open")}
+                      animate={
+                        isOpen
+                          ? { rotate: 180, scale: 1.06 }
+                          : { rotate: 0, scale: 1 }
+                      }
+                      whileHover={!isOpen ? { scale: 1.08, rotate: 12 } : undefined}
+                      whileTap={{ scale: 0.94 }}
+                      transition={{ type: "spring", stiffness: 420, damping: 22 }}
+                    >
                       <ChevronDown size={18} />
-                    </span>
+                    </motion.span>
                   </span>
                 </button>
                 <AnimatePresence initial={false}>

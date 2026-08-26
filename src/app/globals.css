@@ -273,7 +273,7 @@ body {
   background: #1c1c1c;
   transform: scaleX(0);
   transform-origin: left center;
-  transition: transform 300ms ease;
+  transition: transform 580ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .case-row > * {
@@ -290,7 +290,7 @@ body {
   line-height: 1.15;
   letter-spacing: -0.03em;
   color: var(--ink);
-  transition: color 300ms ease;
+  transition: color 580ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .case-row__action {
@@ -309,16 +309,18 @@ body {
   border: 1px solid var(--line);
   color: var(--ink);
   background: #fff;
+  will-change: transform;
   transition:
-    transform 300ms ease,
-    color 300ms ease,
-    border-color 300ms ease,
-    background 300ms ease;
+    color 580ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 580ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 580ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 420ms ease;
 }
 
 .case-row__btn.is-open {
-  transform: rotate(180deg);
   border-color: #1c1c1c;
+  background: var(--accent-soft);
+  box-shadow: 0 10px 24px rgba(34, 34, 34, 0.12);
 }
 
 .case-row:focus-visible {
@@ -430,7 +432,7 @@ body {
     color: #fff;
     border-color: rgba(255, 255, 255, 0.55);
     background: transparent;
-    transform: translate(2px, -2px);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
   }
 
   .case-item:not(.is-open) .case-row:focus-visible {
@@ -441,13 +443,55 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .case-row::before,
   .case-row__title,
-  .case-row__btn {
+  .case-row__btn,
+  .scroll-top {
     transition: none;
   }
+}
 
-  .case-item:not(.is-open) .case-row:hover .case-row__btn,
-  .case-item:not(.is-open) .case-row:focus-visible .case-row__btn {
-    transform: none;
+.scroll-top {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: inline-flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 14px 34px rgba(34, 34, 34, 0.12);
+  cursor: pointer;
+  transition:
+    background 280ms ease,
+    color 280ms ease,
+    border-color 280ms ease,
+    transform 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.scroll-top:hover {
+  background: #1c1c1c;
+  border-color: #1c1c1c;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(34, 34, 34, 0.18);
+}
+
+.scroll-top:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 3px;
+}
+
+@media (min-width: 640px) {
+  .scroll-top {
+    right: max(1.5rem, env(safe-area-inset-right));
+    bottom: max(1.75rem, env(safe-area-inset-bottom));
+    width: 3.25rem;
+    height: 3.25rem;
   }
 }
 

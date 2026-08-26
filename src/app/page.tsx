@@ -2,6 +2,7 @@ import { Cases } from "@/components/cases";
 import { Header } from "@/components/header";
 import { ProjectSpheres } from "@/components/project-spheres";
 import { Reveal } from "@/components/reveal";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { Skills } from "@/components/skills";
 import { ToolsGrid } from "@/components/tools-grid";
 import { process, site } from "@/content/site";
@@ -169,6 +170,7 @@ export default function Home() {
           </a>
         </div>
       </footer>
+      <ScrollToTop />
     </div>
   );
 }
