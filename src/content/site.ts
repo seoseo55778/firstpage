@@ -157,7 +157,6 @@ export const tools = [
   { name: "Claude Code", bg: "#3A3A3A" },
   { name: "Codex", bg: "#2A2A2A" },
   { name: "Grok", bg: "#171717" },
-  { name: "Python (SEO-скрипты)", bg: "#3A3A3A" },
   { name: "Yandex Wordstat API", bg: "#2A2A2A" },
   { name: "GA4", bg: "#171717" },
   { name: "Яндекс.Метрика", bg: "#3A3A3A" },
