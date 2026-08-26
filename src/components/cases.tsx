@@ -295,7 +295,6 @@ export function Cases() {
                 >
                   <span className="case-row__copy">
                     <h3 className="case-row__title font-display">{item.title}</h3>
-                    <span className="case-row__summary">{item.summary}</span>
                   </span>
                   <span className="case-row__action" aria-hidden>
                     <motion.span

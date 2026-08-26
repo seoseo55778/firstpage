@@ -115,6 +115,12 @@ body {
     box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.skill-card__head {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
 .skill-card__num {
   position: absolute;
   top: 22px;
@@ -150,6 +156,7 @@ body {
 .skill-card__desc {
   position: relative;
   z-index: 1;
+  flex-shrink: 0;
   margin: 0.85rem 0 0;
   font-size: 0.98rem;
   line-height: 1.55;
@@ -160,11 +167,12 @@ body {
 .skill-card__list {
   position: relative;
   z-index: 1;
-  margin: auto 2.4rem 0 0;
-  padding: 1.15rem 0 0.15rem;
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   gap: 0.55rem;
+  margin: 0 2.4rem 0 0;
+  padding: 1.15rem 0 1.75rem;
 }
 
 .skill-card__list li {
@@ -329,14 +337,6 @@ body {
   line-height: 1.18;
   letter-spacing: -0.03em;
   color: var(--ink);
-  transition: color 580ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.case-row__summary {
-  max-width: 42rem;
-  font-size: 0.92rem;
-  line-height: 1.4;
-  color: var(--muted);
   transition: color 580ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -679,11 +679,6 @@ body {
     color: #fff;
   }
 
-  .case-item:not(.is-open) .case-row:hover .case-row__summary,
-  .case-item:not(.is-open) .case-row:focus-visible .case-row__summary {
-    color: rgba(255, 255, 255, 0.72);
-  }
-
   .case-item:not(.is-open) .case-row:hover .case-row__btn,
   .case-item:not(.is-open) .case-row:focus-visible .case-row__btn {
     color: #fff;
@@ -700,7 +695,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .case-row::before,
   .case-row__title,
-  .case-row__summary,
   .case-row__btn,
   .scroll-top {
     transition: none;
