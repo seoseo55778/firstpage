@@ -267,7 +267,7 @@ function CaseBody({
 }
 
 export function Cases() {
-  const [open, setOpen] = useState<string>(cases[0].slug);
+  const [open, setOpen] = useState<string>("");
   const [lightbox, setLightbox] = useState<CaseImage | null>(null);
 
   return (
