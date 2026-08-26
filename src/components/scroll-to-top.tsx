@@ -9,7 +9,8 @@ export function ScrollToTop() {
 
   useEffect(() => {
     const onScroll = () => {
-      setVisible(window.scrollY > 520);
+      const y = window.scrollY || document.documentElement.scrollTop || 0;
+      setVisible(y > 420);
     };
 
     onScroll();
