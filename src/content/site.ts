@@ -194,7 +194,7 @@ export const cases: CaseStudy[] = [
   {
     slug: "telecom",
     number: "01",
-    title: "B2B-дилер телеком-оборудования",
+    title: "B2B-дилер телекоммуникационного оборудования",
     niche: "Коммутаторы, маршрутизаторы, Wi‑Fi",
     summary: "B2B-дилер оборудования · Google · 2 года",
     engine: "Google",
@@ -252,7 +252,7 @@ export const cases: CaseStudy[] = [
   {
     slug: "foundry",
     number: "03",
-    title: "Запуск SEO сайта литейного завода",
+    title: "Запуск SEO на сайте завода литейной продукции",
     niche: "B2B, чугунные изделия, Москва",
     summary: "B2B-завод с нуля · Москва · с декабря 2024",
     period: "с декабря 2024",
