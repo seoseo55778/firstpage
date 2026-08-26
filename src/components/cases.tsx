@@ -3,7 +3,7 @@
 import { cases, type CaseStudy } from "@/content/site";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Expand, X } from "lucide-react";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
@@ -110,6 +110,35 @@ function CountUp({ value }: { value: string }) {
 
 type CaseImage = CaseStudy["images"][number];
 
+const prefetched = new Set<string>();
+
+function prefetchCaseImages(images: readonly CaseImage[]) {
+  if (typeof window === "undefined") return;
+
+  for (const image of images) {
+    if (prefetched.has(image.src)) continue;
+    prefetched.add(image.src);
+
+    const { props } = getImageProps({
+      src: image.src,
+      alt: "",
+      width: 800,
+      height: 480,
+      quality: 70,
+      sizes: "(max-width: 700px) 100vw, (max-width: 1024px) 50vw, 360px",
+    });
+
+    const link = document.createElement("link");
+    link.rel = "preload";
+    link.as = "image";
+    link.href = props.src;
+    if (props.srcSet) link.imageSrcset = props.srcSet;
+    if (props.sizes) link.imageSizes = props.sizes;
+    link.fetchPriority = "low";
+    document.head.appendChild(link);
+  }
+}
+
 function CaseLightbox({
   image,
   onClose,
@@ -174,10 +203,11 @@ function CaseLightbox({
             <Image
               src={image.src}
               alt={image.alt}
-              width={1800}
-              height={1200}
+              width={1200}
+              height={900}
               className="case-lightbox__image"
-              sizes="96vw"
+              sizes="(max-width: 1120px) 96vw, 1120px"
+              quality={85}
               priority
             />
           </motion.div>
@@ -243,7 +273,7 @@ function CaseBody({
             count >= 3 && "is-three",
           )}
         >
-          {item.images.map((img) => (
+          {item.images.map((img, index) => (
             <button
               key={img.src}
               type="button"
@@ -254,11 +284,13 @@ function CaseBody({
               <Image
                 src={img.src}
                 alt={img.alt}
-                width={1200}
-                height={720}
+                width={800}
+                height={480}
                 className="case-chart__image"
-                sizes="(max-width: 1024px) 100vw, 33vw"
-                loading="lazy"
+                sizes="(max-width: 700px) 100vw, (max-width: 1024px) 50vw, 360px"
+                quality={70}
+                priority={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
               />
               <span className="case-chart__hint" aria-hidden>
                 <Expand size={16} />
@@ -274,9 +306,32 @@ function CaseBody({
 export function Cases() {
   const [open, setOpen] = useState<string>("");
   const [lightbox, setLightbox] = useState<CaseImage | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        // Warm the first couple of cases before the user opens them.
+        cases.slice(0, 2).forEach((item) => prefetchCaseImages(item.images));
+        observer.disconnect();
+      },
+      { rootMargin: "200px 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section id="cases" className="cases-section px-4 py-24 sm:px-8 sm:py-28">
+    <section
+      id="cases"
+      ref={sectionRef}
+      className="cases-section px-4 py-24 sm:px-8 sm:py-28"
+    >
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-12 sm:mb-14">
           <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
@@ -291,6 +346,8 @@ export function Cases() {
               <article
                 key={item.slug}
                 className={cn("case-item", isOpen && "is-open")}
+                onMouseEnter={() => prefetchCaseImages(item.images)}
+                onFocusCapture={() => prefetchCaseImages(item.images)}
               >
                 <button
                   type="button"
