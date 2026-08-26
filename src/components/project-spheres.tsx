@@ -13,16 +13,13 @@ function SphereTag({
       tabIndex={0}
       className="sphere-tag"
       style={
-        {
-          backgroundColor: sphere.bg,
-          ...(fillRow
-            ? {
-                flexGrow: sphere.grow,
-                flexShrink: 1,
-                flexBasis: 0,
-              }
-            : null),
-        } as CSSProperties
+        fillRow
+          ? ({
+              flexGrow: sphere.grow,
+              flexShrink: 1,
+              flexBasis: 0,
+            } as CSSProperties)
+          : undefined
       }
     >
       {sphere.name}

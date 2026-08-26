@@ -12,60 +12,96 @@ function formatInt(n: number) {
   return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
 }
 
+function parseMetric(value: string) {
+  const match = value.match(/^([×+]?)([\d\s\u00a0]+(?:[,.]\d+)?)(.*)$/u);
+  if (!match) {
+    return { animatable: false as const, final: value };
+  }
+
+  const [, prefix, rawNumber, suffix] = match;
+  const compact = rawNumber.replace(/[\s\u00a0]/g, "");
+  const target = Number(compact.replace(",", "."));
+  if (!Number.isFinite(target)) {
+    return { animatable: false as const, final: value };
+  }
+
+  const format = (n: number) => {
+    const formatted =
+      compact.includes(",") || compact.includes(".")
+        ? n.toFixed(1).replace(".", ",")
+        : formatInt(n);
+    return `${prefix}${formatted}${suffix}`;
+  };
+
+  return {
+    animatable: true as const,
+    final: format(target),
+    target,
+    format,
+  };
+}
+
 function CountUp({ value }: { value: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const numeric = /^([×+]?)([\d\s\u00a0]+(?:[,.]\d+)?)(.*)$/.test(value);
-  const [display, setDisplay] = useState(numeric ? "0" : value);
+  const parsed = parseMetric(value);
+  const [display, setDisplay] = useState(parsed.final);
 
   useEffect(() => {
-    const match = value.match(/^([×+]?)([\d\s\u00a0]+(?:[,.]\d+)?)(.*)$/);
-    if (!match) {
-      setDisplay(value);
-      return;
-    }
+    const next = parseMetric(value);
+    setDisplay(next.final);
 
-    const [, prefix, rawNumber, suffix] = match;
-    const compact = rawNumber.replace(/[\s\u00a0]/g, "");
-    const target = Number(compact.replace(",", "."));
-    if (!Number.isFinite(target)) {
-      setDisplay(value);
-      return;
-    }
+    if (!next.animatable) return;
 
     let frame = 0;
     let started = false;
+    let finished = false;
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      setDisplay(next.final);
+    };
+
+    const run = () => {
+      if (started) return;
+      started = true;
+      const start = performance.now();
+      const duration = 950;
+
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setDisplay(next.format(next.target * eased));
+        if (progress < 1) {
+          frame = requestAnimationFrame(tick);
+        } else {
+          finish();
+        }
+      };
+
+      frame = requestAnimationFrame(tick);
+    };
+
+    const node = ref.current;
+    if (!node) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry.isIntersecting || started) return;
-        started = true;
-        const start = performance.now();
-        const duration = 950;
-
-        const tick = (now: number) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = target * eased;
-          const formatted =
-            compact.includes(",") || compact.includes(".")
-              ? current.toFixed(1).replace(".", ",")
-              : formatInt(current);
-
-          setDisplay(`${prefix}${formatted}${suffix}`);
-          if (progress < 1) frame = requestAnimationFrame(tick);
-        };
-
-        frame = requestAnimationFrame(tick);
+        if (entry.isIntersecting) run();
       },
-      { threshold: 0.45 },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" },
     );
 
-    const node = ref.current;
-    if (node) observer.observe(node);
+    observer.observe(node);
+
+    const fallback = window.setTimeout(() => {
+      if (!started) finish();
+    }, 900);
 
     return () => {
       observer.disconnect();
       cancelAnimationFrame(frame);
+      window.clearTimeout(fallback);
     };
   }, [value]);
 
@@ -165,9 +201,7 @@ function CaseBody({
     <div className="case-panel">
       <div className="case-body">
         <div>
-          <p className="max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
-            {item.problem}
-          </p>
+          <p className="case-body__lead">{item.problem}</p>
           <p className="case-body__kicker">Работы по проекту</p>
           <ul className="mt-4 space-y-3">
             {item.work.map((w) => (
@@ -178,7 +212,10 @@ function CaseBody({
             ))}
           </ul>
           {item.note ? (
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted">{item.note}</p>
+            <>
+              <p className="case-body__kicker">Вывод</p>
+              <p className="case-body__note">{item.note}</p>
+            </>
           ) : null}
         </div>
         <div className="case-aside">
@@ -234,7 +271,7 @@ export function Cases() {
   const [lightbox, setLightbox] = useState<CaseImage | null>(null);
 
   return (
-    <section id="cases" className="px-4 py-24 sm:px-8 sm:py-28">
+    <section id="cases" className="cases-section px-4 py-24 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-12 sm:mb-14">
           <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
@@ -242,13 +279,13 @@ export function Cases() {
           </h2>
         </div>
 
-        <div className="border-y border-line">
+        <div className="cases-board">
           {cases.map((item) => {
             const isOpen = open === item.slug;
             return (
               <article
                 key={item.slug}
-                className={cn("case-item border-b border-line last:border-b-0", isOpen && "is-open")}
+                className={cn("case-item", isOpen && "is-open")}
               >
                 <button
                   type="button"
@@ -256,7 +293,10 @@ export function Cases() {
                   className="case-row"
                   aria-expanded={isOpen}
                 >
-                  <h3 className="case-row__title font-display">{item.title}</h3>
+                  <span className="case-row__copy">
+                    <h3 className="case-row__title font-display">{item.title}</h3>
+                    <span className="case-row__summary">{item.summary}</span>
+                  </span>
                   <span className="case-row__action" aria-hidden>
                     <motion.span
                       className={cn("case-row__btn", isOpen && "is-open")}

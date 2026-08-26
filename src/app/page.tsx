@@ -112,7 +112,7 @@ export default function Home() {
                     <span className="absolute right-6 top-5 font-display text-6xl font-semibold leading-none text-accent-soft">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="font-display text-2xl text-ink sm:text-3xl">{p.title}</h3>
+                    <h3 className="process-card__title font-display text-ink">{p.title}</h3>
                     <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted">{p.text}</p>
                   </article>
                 </Reveal>
@@ -124,11 +124,13 @@ export default function Home() {
 
       <section id="contact" className="px-4 pb-16 sm:px-8">
         <Reveal>
-          <div className="mx-auto max-w-[1200px] rounded-[32px] border border-line bg-surface px-6 py-16 sm:px-12 sm:py-20">
-            <h2 className="font-display text-4xl tracking-tight text-ink sm:text-6xl">
+          <div className="contact-panel mx-auto max-w-[1200px] rounded-[32px] px-6 py-16 sm:px-12 sm:py-20">
+            <h2 className="font-display text-4xl tracking-tight text-white sm:text-6xl">
               Связаться со мной
             </h2>
-            <p className="mt-5 max-w-lg text-lg text-muted">Telegram — самый быстрый способ.</p>
+            <p className="contact-panel__lead mt-5 max-w-lg text-lg">
+              Telegram — самый быстрый способ.
+            </p>
             <a
               href={site.telegram}
               target="_blank"
