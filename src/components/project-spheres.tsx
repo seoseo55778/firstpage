@@ -22,19 +22,19 @@ function SphereTag({
           : undefined
       }
     >
-      {sphere.name}
+      <span className="sphere-tag__label">{sphere.name}</span>
     </span>
   );
 }
 
 export function ProjectSpheres() {
   return (
-    <section id="spheres" className="relative bg-paper px-4 py-20 sm:px-8 sm:py-24">
+    <section id="spheres" className="sphere-section relative px-4 py-20 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-[1200px]">
-        <h2 className="font-display text-4xl tracking-tight text-ink sm:text-5xl">
+        <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
           Сферы проектов
         </h2>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+        <p className="sphere-section__lead mt-5 max-w-2xl text-base leading-relaxed sm:text-lg">
           Работал с проектами, где важны сложный спрос, понятная структура сайта и
           измеримый рост из органического поиска.
         </p>

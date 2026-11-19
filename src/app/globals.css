@@ -796,6 +796,15 @@ body {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.sphere-section {
+  background: #2457ff;
+  color: #fff;
+}
+
+.sphere-section__lead {
+  color: rgba(255, 255, 255, 0.78);
+}
+
 .sphere-cloud-mobile {
   display: flex;
   flex-wrap: wrap;
@@ -835,6 +844,9 @@ body {
 }
 
 .sphere-tag {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -847,18 +859,31 @@ body {
   letter-spacing: -0.02em;
   line-height: 1;
   color: var(--ink);
-  background: var(--sphere);
+  background: #fff;
   text-align: center;
   white-space: nowrap;
   outline: none;
   cursor: default;
   box-sizing: border-box;
   transition:
-    transform 200ms ease,
-    box-shadow 200ms ease,
-    border-color 200ms ease,
-    background 220ms ease,
-    color 220ms ease;
+    transform 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.sphere-tag__label {
+  position: relative;
+  z-index: 1;
+}
+
+.sphere-tag::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #f0ff40;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (min-width: 640px) {
@@ -881,10 +906,13 @@ body {
 .sphere-tag:hover,
 .sphere-tag:focus-visible {
   transform: translateY(-2px);
-  color: #fff;
-  background: var(--sphere-hover);
-  border-color: var(--sphere-hover);
-  box-shadow: 0 12px 24px rgba(23, 23, 23, 0.14);
+  color: var(--ink);
+  box-shadow: 0 12px 24px rgba(8, 22, 80, 0.22);
+}
+
+.sphere-tag:hover::before,
+.sphere-tag:focus-visible::before {
+  transform: scaleX(1);
 }
 
 .sphere-tag:focus-visible {
@@ -950,12 +978,19 @@ body {
     transform: none;
   }
 
-  .sphere-tag {
-    transition: box-shadow 120ms ease;
+  .sphere-tag,
+  .sphere-tag::before {
+    transition: none;
   }
 
   .sphere-tag:hover,
   .sphere-tag:focus-visible {
+    transform: none;
+    background: #f0ff40;
+  }
+
+  .sphere-tag:hover::before,
+  .sphere-tag:focus-visible::before {
     transform: none;
   }
 }
