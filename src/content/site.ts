@@ -3,7 +3,7 @@ export const site = {
   role: "SEO-специалист",
   experience: "3 года",
   /** Production URL for canonical / sitemap / Open Graph. Override via NEXT_PUBLIC_SITE_URL in layout. */
-  url: "https://firstpage.vercel.app",
+  url: "https://firstpage-ecru.vercel.app",
   telegram: "https://t.me/gordeigezha",
   instagram: "https://www.instagram.com/gordeigezha/",
   telegramHandle: "@gordeigezha",
