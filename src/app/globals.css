@@ -785,6 +785,103 @@ body {
   box-shadow: 0 18px 40px rgba(30, 28, 24, 0.1);
 }
 
+.price-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  height: 100%;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.45s ease;
+}
+
+.price-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #f0ff40;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.price-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 1.75rem;
+}
+
+@media (min-width: 640px) {
+  .price-card__body {
+    padding: 2.25rem;
+  }
+}
+
+.price-card__term {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.price-card__title {
+  margin-top: 0.85rem;
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.price-card__sum {
+  margin-top: 1.25rem;
+  font-size: clamp(1.8rem, 2.6vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.price-card__list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0;
+  list-style: none;
+  color: #3a3a36;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.price-card:hover,
+.price-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: #eadf3a;
+  box-shadow: 0 18px 40px rgba(30, 28, 24, 0.1);
+  outline: none;
+}
+
+.price-card:hover::before,
+.price-card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.price-card:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
 .contact-panel {
   background: #171717;
   color: #fff;
@@ -992,6 +1089,22 @@ body {
 
   .sphere-tag:hover::before,
   .sphere-tag:focus-visible::before {
+    transform: none;
+  }
+
+  .price-card,
+  .price-card::before {
+    transition: none;
+  }
+
+  .price-card:hover,
+  .price-card:focus-visible {
+    transform: none;
+    background: #f0ff40;
+  }
+
+  .price-card:hover::before,
+  .price-card:focus-visible::before {
     transform: none;
   }
 }

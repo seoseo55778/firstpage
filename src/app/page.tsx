@@ -1,5 +1,6 @@
 import { Cases } from "@/components/cases";
 import { Header } from "@/components/header";
+import { Prices } from "@/components/prices";
 import { ProjectSpheres } from "@/components/project-spheres";
 import { Reveal } from "@/components/reveal";
 import { ScrollToTop } from "@/components/scroll-to-top";
@@ -124,6 +125,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Prices />
 
       <section id="contact" className="px-4 pb-16 sm:px-8">
         <Reveal>
