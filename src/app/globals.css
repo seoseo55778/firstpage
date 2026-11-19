@@ -893,6 +893,25 @@ body {
   color: rgba(255, 255, 255, 0.72);
 }
 
+.desk-figure {
+  position: absolute;
+  right: 0;
+  bottom: 58px;
+  z-index: 2;
+  width: 112px;
+  height: 150px;
+  pointer-events: auto;
+}
+
+@media (min-width: 640px) {
+  .desk-figure {
+    right: -22px;
+    bottom: 36px;
+    width: 158px;
+    height: 210px;
+  }
+}
+
 .sphere-section {
   background: #e7e4dc;
   color: var(--ink);

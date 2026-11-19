@@ -1,4 +1,5 @@
 import { Cases } from "@/components/cases";
+import { DeskFigure } from "@/components/desk-figure";
 import { Header } from "@/components/header";
 import { Prices } from "@/components/prices";
 import { ProjectSpheres } from "@/components/project-spheres";
@@ -81,7 +82,8 @@ export default function Home() {
                   className="h-auto w-full object-cover object-[center_18%]"
                 />
               </div>
-              <div className="absolute -bottom-5 left-1/2 w-[82%] -translate-x-1/2 rounded-2xl border border-line bg-white/92 px-5 py-4 shadow-[0_18px_42px_rgba(34,34,34,0.10)] backdrop-blur">
+              <DeskFigure />
+              <div className="absolute -bottom-5 left-1/2 z-[1] w-[82%] -translate-x-1/2 rounded-2xl border border-line bg-white/92 px-5 py-4 shadow-[0_18px_42px_rgba(34,34,34,0.10)] backdrop-blur">
                 <p className="text-sm font-semibold text-ink">SEO-специалист</p>
                 <p className="mt-1 text-xs text-muted">
                   Комплексное продвижение сайтов в Яндекс и Google
