@@ -896,9 +896,9 @@ body {
 .sonic-peek {
   position: absolute;
   z-index: 0;
-  right: 4px;
-  bottom: -16px;
-  width: 176px;
+  right: 28px;
+  bottom: -8px;
+  width: 164px;
   pointer-events: none;
   user-select: none;
 }

@@ -33,7 +33,7 @@ export function ProjectSpheres() {
     <section id="spheres" className="sphere-section relative overflow-hidden px-4 py-20 sm:px-8 sm:py-24">
       <div className="sphere-section__stage relative mx-auto max-w-[1200px]">
         <div className="sonic-peek" aria-hidden="true">
-          <Image src="/sonic.webp" alt="" width={827} height={1062} />
+          <Image src="/sonic-full.webp" alt="" width={694} height={934} />
         </div>
         <div className="relative z-[1]">
           <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
