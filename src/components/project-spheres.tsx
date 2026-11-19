@@ -1,5 +1,6 @@
 import { projectSphereRows, projectSpheres } from "@/content/site";
 import type { CSSProperties } from "react";
+import Image from "next/image";
 
 function SphereTag({
   sphere,
@@ -29,8 +30,11 @@ function SphereTag({
 
 export function ProjectSpheres() {
   return (
-    <section id="spheres" className="sphere-section relative px-4 py-20 sm:px-8 sm:py-24">
-      <div className="mx-auto max-w-[1200px]">
+    <section id="spheres" className="sphere-section relative overflow-hidden px-4 py-20 sm:px-8 sm:py-24">
+      <div className="sonic-peek" aria-hidden="true">
+        <Image src="/sonic.webp" alt="" width={827} height={1062} />
+      </div>
+      <div className="sphere-section__stage relative z-[1] mx-auto max-w-[1200px]">
         <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
           Сферы проектов
         </h2>
