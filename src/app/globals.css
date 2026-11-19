@@ -797,12 +797,12 @@ body {
 }
 
 .sphere-section {
-  background: #2457ff;
-  color: #fff;
+  background: #e7e4dc;
+  color: var(--ink);
 }
 
 .sphere-section__lead {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
 }
 
 .sphere-cloud-mobile {
@@ -852,7 +852,7 @@ body {
   justify-content: center;
   height: 68px;
   border-radius: 999px;
-  border: 1px solid transparent;
+  border: 1px solid #ddd9d0;
   padding: 0 28px;
   font-size: 1.125rem;
   font-weight: 600;
@@ -907,7 +907,8 @@ body {
 .sphere-tag:focus-visible {
   transform: translateY(-2px);
   color: var(--ink);
-  box-shadow: 0 12px 24px rgba(8, 22, 80, 0.22);
+  border-color: #eadf3a;
+  box-shadow: 0 12px 24px rgba(23, 23, 23, 0.1);
 }
 
 .sphere-tag:hover::before,
