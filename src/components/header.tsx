@@ -9,6 +9,7 @@ const links = [
   { href: "#skills", label: "Компетенции" },
   { href: "#stack", label: "Стек" },
   { href: "#prices", label: "Цены" },
+  { href: "#faq", label: "Вопросы" },
   { href: "#contact", label: "Контакты" },
 ];
 

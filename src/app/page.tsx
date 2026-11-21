@@ -1,4 +1,5 @@
 import { Cases } from "@/components/cases";
+import { Faq } from "@/components/faq";
 import { Header } from "@/components/header";
 import { Prices } from "@/components/prices";
 import { ProjectSpheres } from "@/components/project-spheres";
@@ -111,9 +112,15 @@ export default function Home() {
                   <article
                     className={cn(
                       "process-card relative h-full overflow-hidden rounded-[28px] border border-line bg-surface p-7 sm:p-10",
+                      (i === 0 || i === 3) && "process-card--fill",
                     )}
                   >
-                    <span className="absolute right-6 top-5 font-display text-6xl font-semibold leading-none text-accent-soft">
+                    <span
+                      className={cn(
+                        "process-card__num absolute right-6 top-5 font-display text-6xl font-semibold leading-none",
+                        i === 0 || i === 3 ? "text-ink" : "text-accent-soft",
+                      )}
+                    >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="process-card__title font-display text-ink">{p.title}</h3>
@@ -127,6 +134,7 @@ export default function Home() {
       </section>
 
       <Prices />
+      <Faq />
 
       <section id="contact" className="px-4 pb-16 sm:px-8">
         <Reveal>
