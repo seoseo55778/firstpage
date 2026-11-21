@@ -65,6 +65,64 @@ body {
     radial-gradient(640px 360px at 0% 12%, rgba(240, 255, 64, 0.18), transparent 52%);
 }
 
+.hero-letter {
+  display: inline-block;
+  color: #c6c6c4;
+  animation: hero-letter-ink 4.6s ease-in-out infinite;
+}
+
+.hero-letter--italic {
+  font-style: italic;
+}
+
+.hero-letter--fill {
+  font-style: italic;
+  animation-name: hero-letter-fill;
+  text-shadow:
+    -0.8px -0.8px 0 var(--ink),
+    0 -0.8px 0 var(--ink),
+    0.8px -0.8px 0 var(--ink),
+    -0.8px 0 0 var(--ink),
+    0.8px 0 0 var(--ink),
+    -0.8px 0.8px 0 var(--ink),
+    0 0.8px 0 var(--ink),
+    0.8px 0.8px 0 var(--ink);
+}
+
+@keyframes hero-letter-ink {
+  0%,
+  12% {
+    color: #c6c6c4;
+  }
+
+  34%,
+  68% {
+    color: var(--ink);
+  }
+
+  90%,
+  100% {
+    color: #c6c6c4;
+  }
+}
+
+@keyframes hero-letter-fill {
+  0%,
+  12% {
+    color: #c6c6c4;
+  }
+
+  34%,
+  68% {
+    color: #f0ff40;
+  }
+
+  90%,
+  100% {
+    color: #c6c6c4;
+  }
+}
+
 .hero-stroke {
   color: #fff;
   font-style: italic;
@@ -1226,6 +1284,16 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hero-letter,
+  .hero-letter--fill {
+    animation: none;
+    color: var(--ink);
+  }
+
+  .hero-letter--fill {
+    color: #f0ff40;
   }
 
   .skill-card,
