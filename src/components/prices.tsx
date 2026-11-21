@@ -10,7 +10,7 @@ export function Prices() {
             Цены
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            Три формата работы. Сумма стартовая: точная зависит от сайта и конкуренции.
+            Аудит разово. SEO и GEO — ведение, сумма стартовая: точная зависит от сайта.
             Ссылки, тексты и вёрстка считаются отдельно.
           </p>
         </Reveal>

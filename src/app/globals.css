@@ -4,13 +4,13 @@
   --paper: #ffffff;
   --ink: #171717;
   --muted: #6b6b68;
-  --line: #e5e4df;
+  --line: #e6e6e6;
   --surface: #ffffff;
   --accent: #2457ff;
   --accent-soft: #f0ff40;
   --accent-hover: #121212;
-  --section-warm: #f7f6f2;
-  --sphere: #f0f0ed;
+  --section-warm: #f4f4f4;
+  --sphere: #f4f4f4;
   --sphere-hover: #1c1c1c;
 }
 
@@ -106,7 +106,7 @@ body {
   isolation: isolate;
   overflow: visible;
   background: var(--surface);
-  border-color: #e5e4df;
+  border-color: var(--line);
   transition:
     background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -782,7 +782,7 @@ body {
 
 .process-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(30, 28, 24, 0.1);
+  box-shadow: 0 18px 40px rgba(23, 23, 23, 0.08);
 }
 
 .price-card {
@@ -868,7 +868,7 @@ body {
 .price-card:focus-visible {
   transform: translateY(-6px);
   border-color: #eadf3a;
-  box-shadow: 0 18px 40px rgba(30, 28, 24, 0.1);
+  box-shadow: 0 18px 40px rgba(23, 23, 23, 0.08);
   outline: none;
 }
 
@@ -929,7 +929,7 @@ body {
 }
 
 .sphere-section {
-  background: #e7e4dc;
+  background: #f4f4f4;
   color: var(--ink);
 }
 
@@ -984,7 +984,7 @@ body {
   justify-content: center;
   height: 68px;
   border-radius: 999px;
-  border: 1px solid #ddd9d0;
+  border: 2px solid #d9d9d9;
   padding: 0 28px;
   font-size: 1.125rem;
   font-weight: 600;
