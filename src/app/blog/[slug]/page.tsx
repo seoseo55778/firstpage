@@ -83,10 +83,10 @@ export default async function BlogPostPage({ params }: { params: Promise<Params>
           ) : null}
         </div>
       </article>
-      <section className="px-4 py-10 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 py-14 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 md:grid-cols-2">
           {others.map((item) => (
-            <Link key={item.slug} href={`/blog/${item.slug}`} className="rounded-[28px] border border-line p-6 transition hover:border-[#eadf3a]">
+            <Link key={item.slug} href={`/blog/${item.slug}`} className="rounded-[28px] border border-line bg-white p-6 transition hover:border-[#eadf3a]">
               <p className="text-sm text-muted">{formatDate(item.date)}</p>
               <h2 className="mt-3 font-display text-2xl text-ink">{item.title}</h2>
             </Link>

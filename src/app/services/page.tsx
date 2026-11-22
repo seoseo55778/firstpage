@@ -20,15 +20,19 @@ export default function ServicesPage() {
         title="Три способа начать, без пакета «всё включено»"
         lead="Аудит — если нужно понять объём. SEO — если нужны заявки из поиска месяц за месяцем. GEO — если важно, чтобы факты о вас цитировали нейросети. Ссылки, тексты и вёрстка считаются отдельно."
       />
-      <section className="px-4 pb-8 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 pb-20 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 lg:grid-cols-3">
           {services.map((item) => (
-            <Link key={item.slug} href={`/services/${item.slug}`} className="price-card">
+            <Link
+              key={item.slug}
+              href={`/services/${item.slug}`}
+              className={item.slug === "seo" ? "price-card price-card--fill min-h-[320px]" : "price-card min-h-[320px]"}
+            >
               <span className="price-card__body">
                 <span className="price-card__term">{item.term}</span>
                 <h2 className="price-card__title font-display">{item.menuTitle}</h2>
                 <p className="price-card__sum">от {item.price}</p>
-                <p className="mt-4 text-[15px] leading-relaxed text-[#3f3f3c]">{item.menuLead}</p>
+                <p className="price-card__note">{item.menuLead}</p>
               </span>
             </Link>
           ))}

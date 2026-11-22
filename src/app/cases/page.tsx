@@ -20,7 +20,7 @@ export default function CasesPage() {
         title="Проекты, где я вёл SEO"
         lead="В карточке — моя зона: аудит, семантика, структура, ТЗ и контроль внедрения. Если проект шёл через агентство, здесь не расписан весь штат, только работа, которую делал я."
       />
-      <section className="px-4 pb-8 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 pb-20 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 md:grid-cols-2">
           {cases.map((item) => (
             <Link

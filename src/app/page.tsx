@@ -104,12 +104,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-4 pb-8 sm:px-8">
-        <div className="mx-auto grid max-w-[1200px] gap-px overflow-hidden rounded-[28px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+      <section className="proof-band px-4 py-10 sm:px-8 sm:py-12">
+        <div className="mx-auto grid max-w-[1200px] gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {proof.map((item) => (
-            <div key={item.label} className="bg-white px-6 py-6">
-              <p className="font-display text-3xl tracking-tight text-ink">{item.value}</p>
-              <p className="mt-2 text-sm leading-snug text-muted">{item.label}</p>
+            <div key={item.label}>
+              <p className="proof-band__value font-display text-4xl tracking-tight sm:text-5xl">{item.value}</p>
+              <p className="proof-band__label mt-2 text-sm leading-snug">{item.label}</p>
             </div>
           ))}
         </div>
@@ -120,7 +120,7 @@ export default function Home() {
       <Cases />
       <ToolsGrid />
 
-      <section id="process" className="px-4 py-24 sm:px-8 sm:py-28">
+      <section id="process" className="bg-[#f4f4f4] px-4 py-24 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1200px]">
           <Reveal>
             <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
@@ -158,7 +158,7 @@ export default function Home() {
       <Prices />
       <Faq />
 
-      <section className="px-4 py-8 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 py-20 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">

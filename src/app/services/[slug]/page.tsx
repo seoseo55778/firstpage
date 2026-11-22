@@ -118,7 +118,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 py-16 sm:px-8">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="font-display text-4xl tracking-tight text-ink">Что входит</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -149,7 +149,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
               ))}
             </ol>
           </div>
-          <aside className="h-fit rounded-[28px] bg-[#f4f4f4] p-7 sm:p-8">
+          <aside className="h-fit rounded-[28px] bg-[#f0ff40] p-7 sm:p-8">
             <h2 className="font-display text-2xl text-ink">Не входит в сумму</h2>
             <ul className="mt-5 space-y-3">
               {service.excludes.map((item) => (
@@ -164,22 +164,22 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       </section>
 
       {relatedCase ? (
-        <section className="px-4 py-12 sm:px-8">
-          <div className="mx-auto max-w-[1200px] rounded-[28px] border border-line bg-white p-7 sm:p-10">
-            <p className="text-[13px] uppercase tracking-[0.14em] text-muted">Близкий по задаче кейс</p>
-            <h2 className="mt-3 max-w-3xl font-display text-3xl tracking-tight text-ink sm:text-4xl">
+        <section className="proof-band px-4 py-14 sm:px-8">
+          <div className="mx-auto max-w-[1200px]">
+            <p className="text-[13px] uppercase tracking-[0.14em] text-[#f0ff40]">Близкий по задаче кейс</p>
+            <h2 className="mt-3 max-w-3xl font-display text-3xl tracking-tight text-white sm:text-4xl">
               {relatedCase.title}
             </h2>
-            <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-muted">{relatedCase.summary}</p>
+            <p className="proof-band__label mt-4 max-w-2xl text-[15px] leading-relaxed">{relatedCase.summary}</p>
             <div className="mt-6 flex flex-wrap gap-6">
               {relatedCase.results.map((result) => (
                 <p key={result.label}>
-                  <span className="block font-display text-3xl text-ink">{result.value}</span>
-                  <span className="text-sm text-muted">{result.label}</span>
+                  <span className="proof-band__value block font-display text-3xl">{result.value}</span>
+                  <span className="proof-band__label text-sm">{result.label}</span>
                 </p>
               ))}
             </div>
-            <Link href={`/cases/${relatedCase.slug}`} className="mt-8 inline-flex text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4">
+            <Link href={`/cases/${relatedCase.slug}`} className="mt-8 inline-flex text-sm font-medium text-white underline decoration-[#f0ff40] underline-offset-4">
               Разобрать кейс
             </Link>
           </div>
@@ -201,12 +201,12 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       </section>
 
       {relatedPosts.length > 0 ? (
-        <section className="px-4 py-12 sm:px-8">
+        <section className="bg-[#f4f4f4] px-4 py-16 sm:px-8">
           <div className="mx-auto max-w-[1200px]">
             <h2 className="font-display text-4xl tracking-tight text-ink">Материалы по теме</h2>
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               {relatedPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="rounded-[28px] border border-line p-6 transition hover:-translate-y-1 hover:border-[#eadf3a]">
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="rounded-[28px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-[#eadf3a]">
                   <h3 className="font-display text-2xl text-ink">{post.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted">{post.description}</p>
                 </Link>
@@ -225,7 +225,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           ))}
         </div>
       </section>
-      <TalkCta title={`Обсудить ${service.menuTitle.toLowerCase()}`} />
+      <TalkCta title={`Обсудить «${service.menuTitle}»`} />
     </>
   );
 }

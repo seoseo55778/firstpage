@@ -1087,6 +1087,68 @@ body {
   outline-offset: 3px;
 }
 
+.price-card__note {
+  margin-top: 1rem;
+  color: #3f3f3c;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.price-card--fill {
+  background: #f0ff40;
+  border-color: #e4ee3a;
+}
+
+.price-card--fill::before {
+  background: #171717;
+}
+
+.price-card--fill:hover,
+.price-card--fill:focus-visible,
+.price-card--fill:hover .price-card__term,
+.price-card--fill:hover .price-card__title,
+.price-card--fill:hover .price-card__sum,
+.price-card--fill:hover .price-card__list,
+.price-card--fill:hover .price-card__note,
+.price-card--fill:focus-visible .price-card__term,
+.price-card--fill:focus-visible .price-card__title,
+.price-card--fill:focus-visible .price-card__sum,
+.price-card--fill:focus-visible .price-card__list,
+.price-card--fill:focus-visible .price-card__note {
+  color: #fff;
+  border-color: #171717;
+}
+
+.page-hero {
+  background: #f4f4f4;
+}
+
+.proof-band {
+  background: #171717;
+  color: #fff;
+}
+
+.proof-band__value {
+  color: #f0ff40;
+}
+
+.proof-band__label {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.site-footer {
+  background: #171717;
+  color: #fff;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+.site-footer__muted {
+  color: rgba(255, 255, 255, 0.62);
+}
+
 .contact-panel {
   background: #171717;
   color: #fff;
@@ -1366,6 +1428,12 @@ body {
   .price-card:hover::before,
   .price-card:focus-visible::before {
     transform: none;
+  }
+
+  .price-card--fill:hover,
+  .price-card--fill:focus-visible {
+    background: #171717;
+    color: #fff;
   }
 
   .faq-item__header::before,

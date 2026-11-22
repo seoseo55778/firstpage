@@ -14,7 +14,7 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="px-4 pb-8 pt-28 sm:px-8 sm:pb-12 sm:pt-36">
+    <section className="page-hero px-4 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-36">
       <div className="mx-auto max-w-[1200px]">
         <Crumbs items={crumbs} />
         {kicker ? (

@@ -4,20 +4,20 @@ import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-line px-4 py-12 sm:px-8">
+    <footer className="site-footer px-4 py-14 sm:px-8">
       <div className="mx-auto grid max-w-[1200px] gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="font-display text-xl text-ink">{site.name}</p>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
+          <p className="font-display text-xl">{site.name}</p>
+          <p className="site-footer__muted mt-3 max-w-xs text-sm leading-relaxed">
             SEO для малого бизнеса. Один специалист, процесс с понятными приоритетами и отчётом.
           </p>
         </div>
         <div>
-          <p className="text-[13px] uppercase tracking-[0.14em] text-muted">Услуги</p>
+          <p className="site-footer__muted text-[13px] uppercase tracking-[0.14em]">Услуги</p>
           <ul className="mt-3 space-y-2 text-sm">
             {services.map((item) => (
               <li key={item.slug}>
-                <Link href={`/services/${item.slug}`} className="text-ink transition hover:text-muted">
+                <Link href={`/services/${item.slug}`} className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
                   {item.menuTitle}
                 </Link>
               </li>
@@ -25,41 +25,41 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="text-[13px] uppercase tracking-[0.14em] text-muted">Сайт</p>
+          <p className="site-footer__muted text-[13px] uppercase tracking-[0.14em]">Сайт</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li>
-              <Link href="/cases" className="text-ink transition hover:text-muted">
+              <Link href="/cases" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
                 Кейсы
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="text-ink transition hover:text-muted">
+              <Link href="/blog" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
                 Блог
               </Link>
             </li>
             <li>
-              <Link href="/approach" className="text-ink transition hover:text-muted">
+              <Link href="/approach" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
                 Подход
               </Link>
             </li>
             <li>
-              <Link href="/brief" className="text-ink transition hover:text-muted">
+              <Link href="/brief" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
                 Бриф
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className="text-[13px] uppercase tracking-[0.14em] text-muted">Связь</p>
+          <p className="site-footer__muted text-[13px] uppercase tracking-[0.14em]">Связь</p>
           <a
             href={site.telegram}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex text-sm text-ink underline decoration-[#d9d9d9] underline-offset-4 transition hover:decoration-ink"
+            className="mt-3 inline-flex text-sm underline decoration-[#f0ff40] underline-offset-4"
           >
             {site.telegramHandle}
           </a>
-          <p className="mt-6 text-sm text-muted">© {new Date().getFullYear()} {site.name}</p>
+          <p className="site-footer__muted mt-6 text-sm">© {new Date().getFullYear()} {site.name}</p>
         </div>
       </div>
     </footer>

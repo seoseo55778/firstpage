@@ -100,7 +100,7 @@ export default async function CasePage({ params }: { params: Promise<Params> }) 
           </aside>
         </div>
       </section>
-      <section className="px-4 py-8 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 py-12 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 md:grid-cols-2">
           {item.images.map((image) => (
             <figure key={image.src} className="overflow-hidden rounded-[28px] border border-line bg-white">

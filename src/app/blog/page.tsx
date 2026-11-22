@@ -19,7 +19,7 @@ export default function BlogPage() {
         title="Коротко о том, как устроен поиск для малого бизнеса"
         lead="Темы появляются из практики, а не из пустых тегов. Фильтр показывает только те направления, по которым уже есть текст."
       />
-      <section className="px-4 pb-20 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 pb-20 sm:px-8">
         <div className="mx-auto max-w-[1200px]">
           <BlogIndex posts={postsByDate()} />
         </div>

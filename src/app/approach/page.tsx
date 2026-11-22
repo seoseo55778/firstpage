@@ -66,7 +66,7 @@ export default function ApproachPage() {
           ))}
         </div>
       </section>
-      <section className="px-4 py-12 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 py-16 sm:px-8">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="font-display text-4xl tracking-tight text-ink">Как проходит проект</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">

@@ -28,10 +28,10 @@ export default function BriefPage() {
           {site.telegramHandle}
         </a>
       </PageHero>
-      <section className="px-4 pb-20 sm:px-8">
+      <section className="bg-[#f4f4f4] px-4 pb-20 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-8 lg:grid-cols-[minmax(0,640px)_1fr]">
           <BriefForm />
-          <aside className="h-fit rounded-[28px] bg-[#f4f4f4] p-7">
+          <aside className="h-fit rounded-[28px] bg-white p-7">
             <h2 className="font-display text-2xl text-ink">Что прислать, если форма не нужна</h2>
             <ul className="mt-5 space-y-3 text-[15px] leading-relaxed text-[#3a3a36]">
               <li>Адрес сайта и город, если спрос локальный</li>
