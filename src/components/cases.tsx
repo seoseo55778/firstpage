@@ -4,6 +4,7 @@ import { cases, type CaseStudy } from "@/content/site";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Expand, X } from "lucide-react";
 import Image, { getImageProps } from "next/image";
+import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "@/lib/utils";
@@ -249,6 +250,12 @@ function CaseBody({
               <p className="case-body__note">{item.note}</p>
             </>
           ) : null}
+          <Link
+            href={`/cases/${item.slug}`}
+            className="mt-6 inline-flex text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4"
+          >
+            Открыть страницу кейса
+          </Link>
         </div>
         <div className="case-aside">
           <div className="case-metrics">
@@ -334,9 +341,14 @@ export function Cases() {
     >
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-12 sm:mb-14">
-          <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
-            Кейсы
-          </h2>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
+              Кейсы
+            </h2>
+            <Link href="/cases" className="text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4">
+              Все проекты
+            </Link>
+          </div>
         </div>
 
         <div className="cases-board">

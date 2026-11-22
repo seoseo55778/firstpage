@@ -1,17 +1,31 @@
 import { Cases } from "@/components/cases";
 import { Faq } from "@/components/faq";
 import { HeroTitle } from "@/components/hero-title";
-import { Header } from "@/components/header";
 import { Prices } from "@/components/prices";
 import { ProjectSpheres } from "@/components/project-spheres";
 import { Reveal } from "@/components/reveal";
-import { ScrollToTop } from "@/components/scroll-to-top";
 import { Skills } from "@/components/skills";
 import { ToolsGrid } from "@/components/tools-grid";
+import { postsByDate } from "@/content/posts";
 import { process as workStages, site } from "@/content/site";
+import { formatDate } from "@/lib/format";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
+};
+
+const proof = [
+  { value: "×3,8", label: "трафик дилера оборудования" },
+  { value: "+170%", label: "заявки на том же проекте" },
+  { value: "×8", label: "трафик магазина оборудования" },
+  { value: "×5", label: "трафик юрблога за 4 месяца" },
+];
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
 
@@ -29,14 +43,13 @@ const jsonLd = {
 
 export default function Home() {
   return (
-    <div id="top" className="orbit min-h-screen">
+    <div id="top">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
 
-      <section className="relative px-4 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-36">
+      <section className="relative px-4 pb-12 pt-28 sm:px-8 sm:pb-16 sm:pt-36">
         <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-[1.25fr_0.75fr]">
           <Reveal>
             <HeroTitle />
@@ -56,13 +69,16 @@ export default function Home() {
                   className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
               </a>
-              <a
-                href="#cases"
-                className="inline-flex h-14 min-w-[210px] items-center justify-center rounded-full border border-line px-10 text-base text-ink transition hover:border-accent hover:text-accent"
+              <Link
+                href="/services"
+                className="inline-flex h-14 min-w-[210px] items-center justify-center rounded-full border border-line px-10 text-base text-ink transition hover:border-ink"
               >
-                Смотреть кейсы
-              </a>
+                Смотреть услуги
+              </Link>
             </div>
+            <Link href="/cases" className="mt-4 inline-flex text-sm text-ink underline decoration-[#d9d9d9] underline-offset-4">
+              Или сразу к кейсам
+            </Link>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="relative mx-auto max-w-[340px] lg:ml-auto">
@@ -78,13 +94,24 @@ export default function Home() {
                 />
               </div>
               <div className="absolute -bottom-5 left-1/2 z-[1] w-[82%] -translate-x-1/2 rounded-2xl border border-line bg-white/92 px-5 py-4 shadow-[0_18px_42px_rgba(34,34,34,0.10)] backdrop-blur">
-                <p className="text-sm font-semibold text-ink">SEO-специалист</p>
+                <p className="text-sm font-semibold text-ink">Личная практика</p>
                 <p className="mt-1 text-xs text-muted">
-                  Комплексное продвижение сайтов в Яндекс и Google
+                  Порядок работ как в агентстве, разговор напрямую со мной
                 </p>
               </div>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="px-4 pb-8 sm:px-8">
+        <div className="mx-auto grid max-w-[1200px] gap-px overflow-hidden rounded-[28px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+          {proof.map((item) => (
+            <div key={item.label} className="bg-white px-6 py-6">
+              <p className="font-display text-3xl tracking-tight text-ink">{item.value}</p>
+              <p className="mt-2 text-sm leading-snug text-muted">{item.label}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -131,6 +158,34 @@ export default function Home() {
       <Prices />
       <Faq />
 
+      <section className="px-4 py-8 sm:px-8">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
+              Из блога
+            </h2>
+            <Link href="/blog" className="text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4">
+              Все материалы
+            </Link>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {postsByDate()
+              .slice(0, 3)
+              .map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  className="flex h-full flex-col rounded-[28px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-[#eadf3a]"
+                >
+                  <p className="text-sm text-muted">{formatDate(post.date)}</p>
+                  <h3 className="mt-4 font-display text-2xl leading-tight text-ink">{post.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{post.description}</p>
+                </Link>
+              ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contact" className="px-4 pb-16 sm:px-8">
         <Reveal>
           <div className="contact-panel mx-auto max-w-[1200px] rounded-[32px] px-6 py-16 sm:px-12 sm:py-20">
@@ -138,13 +193,14 @@ export default function Home() {
               Связаться со мной
             </h2>
             <p className="contact-panel__lead mt-5 max-w-lg text-lg">
-              Telegram — самый быстрый способ.
+              Telegram — самый быстрый способ. Если удобнее структурировать вводные, есть короткий бриф.
             </p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href={site.telegram}
               target="_blank"
               rel="noopener noreferrer"
-              className="tg-btn group mt-10 inline-flex min-h-16 items-center gap-3 rounded-full px-10 text-lg font-medium sm:min-h-20 sm:px-14 sm:text-xl"
+              className="tg-btn group inline-flex min-h-16 items-center gap-3 rounded-full px-10 text-lg font-medium sm:min-h-20 sm:px-14 sm:text-xl"
             >
               Написать в Telegram
               <ArrowUpRight
@@ -152,36 +208,16 @@ export default function Home() {
                 className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </a>
+              <Link
+                href="/brief"
+                className="inline-flex min-h-16 items-center justify-center rounded-full border border-white/30 px-10 text-lg text-white transition hover:bg-white hover:text-ink sm:min-h-20"
+              >
+                Заполнить бриф
+              </Link>
+            </div>
           </div>
         </Reveal>
       </section>
-
-      <footer className="px-4 py-10 sm:px-8">
-        <div className="mx-auto flex max-w-[1200px] flex-col gap-4 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {site.name}
-          </p>
-          <a
-            href={site.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Telegram"
-            className="inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-visible rounded-full border border-line text-ink transition hover:border-ink hover:bg-ink hover:text-white"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-              className="block"
-            >
-              <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-            </svg>
-          </a>
-        </div>
-      </footer>
-      <ScrollToTop />
     </div>
   );
 }

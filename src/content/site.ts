@@ -17,7 +17,7 @@ export const site = {
   hero: {
     kicker: "Яндекс · Google · 3 года практики",
     title: "SEO, которое\nрастёт в заявки",
-    lead: "Ищу точки роста и системно увеличиваю органический трафик — без отчётов «для галочки».",
+    lead: "Веду поиск сам: семантика, техника и страницы, которые приносят заявки малому бизнесу. Без менеджера между вами и работой.",
   },
   about: [
     "Опыт комплексного продвижения сайтов в Яндекс и Google.",
@@ -363,6 +363,7 @@ export const cases: CaseStudy[] = [
 
 export const prices = [
   {
+    slug: "audit",
     title: "Экспресс-аудит",
     price: "15 000 ₽",
     term: "7 дней",
@@ -373,6 +374,7 @@ export const prices = [
     ],
   },
   {
+    slug: "seo",
     title: "SEO",
     price: "35 000 ₽",
     term: "в месяц",
@@ -383,6 +385,7 @@ export const prices = [
     ],
   },
   {
+    slug: "geo",
     title: "GEO",
     price: "45 000 ₽",
     term: "в месяц",

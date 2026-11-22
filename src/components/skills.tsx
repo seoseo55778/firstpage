@@ -3,6 +3,7 @@
 import { competencies } from "@/content/site";
 import { Reveal } from "@/components/reveal";
 import type { CSSProperties } from "react";
+import Link from "next/link";
 
 type Competency = (typeof competencies)[number] & { href?: string };
 
@@ -37,18 +38,10 @@ function CompetencyCard({ item }: { item: Competency }) {
     </>
   );
 
-  if (item.href) {
-    return (
-      <a href={item.href} className={`${className} cursor-pointer`} style={style}>
-        {inner}
-      </a>
-    );
-  }
-
   return (
-    <article tabIndex={0} className={`${className} cursor-default`} style={style}>
+    <Link href="/services/seo" className={`${className} cursor-pointer`} style={style}>
       {inner}
-    </article>
+    </Link>
   );
 }
 
@@ -60,6 +53,9 @@ export function Skills() {
           <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
             Компетенции
           </h2>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            Это состав SEO-ведения, а не восемь отдельных продуктов. Карточка открывает страницу формата.
+          </p>
         </Reveal>
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {competencies.map((item, i) => (

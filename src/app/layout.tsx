@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geologica } from "next/font/google";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -12,17 +15,17 @@ const geologica = Geologica({
   display: "swap",
 });
 
-const title = `${site.name} — SEO-специалист`;
+const title = `${site.name} — SEO для малого бизнеса`;
 const description =
-  "Портфолио SEO-специалиста Гордея Гежи: кейсы роста органического трафика и заявок в Яндекс и Google. E-commerce, промышленность, строительство, логистика.";
+  "SEO-практика Гордея Гежи: аудит, ведение и GEO для малого бизнеса. Кейсы с цифрами по трафику и заявкам, без отдельного штата менеджеров.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title,
-  description,
-  alternates: {
-    canonical: "/",
+  title: {
+    default: title,
+    template: `%s — ${site.name}`,
   },
+  description,
   openGraph: {
     title,
     description:
@@ -60,7 +63,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${geologica.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${geologica.variable} font-sans antialiased`}>
+        <div className="orbit min-h-screen">
+          <Header />
+          {children}
+          <Footer />
+          <ScrollToTop />
+        </div>
+      </body>
     </html>
   );
 }
