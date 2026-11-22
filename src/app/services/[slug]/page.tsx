@@ -1,3 +1,5 @@
+import { AuditContactForm } from "@/components/audit-contact-form";
+import { Crumbs } from "@/components/crumbs";
 import { PageHero } from "@/components/page-hero";
 import { TalkCta } from "@/components/talk-cta";
 import { getService, services } from "@/content/services";
@@ -6,6 +8,7 @@ import { posts } from "@/content/posts";
 import { pageMeta } from "@/lib/meta";
 import { ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -61,35 +64,75 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PageHero
-        crumbs={[
-          { href: "/", label: "Главная" },
-          { href: "/services", label: "Услуги" },
-          { label: service.menuTitle },
-        ]}
-        kicker={`${service.term} · от ${service.price}`}
-        title={service.title}
-        lead={service.lead}
-      >
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <a
-            href={site.telegram}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="tg-btn group inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 text-base font-medium"
-          >
-            Обсудить в Telegram
-            <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-          <Link
-            href="/brief"
-            className="inline-flex h-14 items-center justify-center rounded-full border border-line px-8 text-base text-ink transition hover:border-ink"
-          >
-            Заполнить бриф
-          </Link>
-        </div>
-        <p className="mt-4 max-w-xl text-sm text-muted">{service.proof}</p>
-      </PageHero>
+      {service.slug === "audit" ? (
+        <section className="page-hero px-4 pb-10 pt-28 sm:px-8 sm:pb-16 sm:pt-36">
+          <div className="mx-auto grid max-w-[1200px] items-start gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(300px,420px)] lg:gap-12">
+            <div>
+              <Crumbs
+                items={[
+                  { href: "/", label: "Главная" },
+                  { href: "/services", label: "Услуги" },
+                  { label: service.menuTitle },
+                ]}
+              />
+              <p className="text-[13px] uppercase tracking-[0.14em] text-muted">
+                {service.term} · от {service.price}
+              </p>
+              <h1 className="mt-3 max-w-xl font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-6xl">
+                {service.title}
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">{service.lead}</p>
+              <p className="mt-4 max-w-xl text-sm text-muted">{service.proof}</p>
+              <Image
+                src="/audit-dog.webp"
+                alt="Персонаж с лупой смотрит сайт перед экспресс-аудитом"
+                width={631}
+                height={559}
+                priority
+                className="mt-2 hidden w-full max-w-[540px] lg:block"
+              />
+            </div>
+            <AuditContactForm />
+            <Image
+              src="/audit-dog.webp"
+              alt=""
+              width={631}
+              height={559}
+              className="w-full max-w-[420px] lg:hidden"
+            />
+          </div>
+        </section>
+      ) : (
+        <PageHero
+          crumbs={[
+            { href: "/", label: "Главная" },
+            { href: "/services", label: "Услуги" },
+            { label: service.menuTitle },
+          ]}
+          kicker={`${service.term} · от ${service.price}`}
+          title={service.title}
+          lead={service.lead}
+        >
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={site.telegram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tg-btn group inline-flex h-14 items-center justify-center gap-2 rounded-full px-8 text-base font-medium"
+            >
+              Обсудить в Telegram
+              <ArrowUpRight size={18} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+            <Link
+              href="/brief"
+              className="inline-flex h-14 items-center justify-center rounded-full border border-line px-8 text-base text-ink transition hover:border-ink"
+            >
+              Заполнить бриф
+            </Link>
+          </div>
+          <p className="mt-4 max-w-xl text-sm text-muted">{service.proof}</p>
+        </PageHero>
+      )}
 
       <section className="px-4 py-8 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 lg:grid-cols-2">
