@@ -159,18 +159,26 @@ body {
 .skill-card {
   --card-accent: var(--accent);
   --card-on-accent: #ffffff;
-  color: inherit;
+  color: var(--card-on-accent);
   text-decoration: none;
   isolation: isolate;
-  overflow: visible;
-  background: var(--surface);
-  border-color: var(--line);
+  overflow: hidden;
+  background: var(--card-accent);
+  border-color: var(--card-accent);
   transition:
-    background 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.16);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.85s cubic-bezier(0.33, 0.05, 0.2, 1);
 }
 
 .skill-card__head {
@@ -183,14 +191,14 @@ body {
   position: absolute;
   top: 22px;
   right: 26px;
-  z-index: 0;
+  z-index: 1;
   font-size: 6.25rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.06em;
   font-variant-numeric: tabular-nums;
-  color: var(--card-accent);
-  opacity: 0.12;
+  color: var(--card-on-accent);
+  opacity: 0.22;
   pointer-events: none;
   user-select: none;
   transition:
@@ -206,7 +214,7 @@ body {
   font-weight: 500;
   line-height: 1.15;
   letter-spacing: -0.035em;
-  color: var(--ink);
+  color: var(--card-on-accent);
   text-wrap: balance;
   transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -218,7 +226,7 @@ body {
   margin: 0.85rem 0 0;
   font-size: 0.98rem;
   line-height: 1.55;
-  color: #3f3f3c;
+  color: var(--card-on-accent);
   transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -239,7 +247,7 @@ body {
   gap: 0.7rem;
   font-size: 0.94rem;
   line-height: 1.45;
-  color: #2e2e2b;
+  color: var(--card-on-accent);
   transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -249,7 +257,7 @@ body {
   height: 2px;
   margin-top: 0.62em;
   border-radius: 1px;
-  background: var(--card-accent);
+  background: var(--card-on-accent);
   transform: translateZ(0);
   transition: background 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -261,7 +269,7 @@ body {
   z-index: 2;
   font-size: 1.15rem;
   line-height: 1;
-  color: var(--card-accent);
+  color: var(--card-on-accent);
   transition:
     transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
     color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -269,37 +277,23 @@ body {
 
 .skill-card:hover,
 .skill-card:focus-visible {
-  background: var(--card-accent);
-  border-color: var(--card-accent);
-  color: var(--card-on-accent);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px color-mix(in srgb, var(--card-accent) 32%, transparent);
+  transform: translateY(-8px);
+  box-shadow: 0 22px 40px color-mix(in srgb, var(--card-accent) 38%, transparent);
 }
 
-.skill-card:hover .skill-card__title,
-.skill-card:hover .skill-card__desc,
-.skill-card:hover .skill-card__list li,
-.skill-card:focus-visible .skill-card__title,
-.skill-card:focus-visible .skill-card__desc,
-.skill-card:focus-visible .skill-card__list li {
-  color: var(--card-on-accent);
-}
-
-.skill-card:hover .skill-card__dash,
-.skill-card:focus-visible .skill-card__dash {
-  background: var(--card-on-accent);
+.skill-card:hover::before,
+.skill-card:focus-visible::before {
+  transform: scaleX(1);
 }
 
 .skill-card:hover .skill-card__arrow,
 .skill-card:focus-visible .skill-card__arrow {
-  color: var(--card-on-accent);
-  transform: translate(3px, -3px);
+  transform: translate(4px, -4px);
 }
 
 .skill-card:hover .skill-card__num,
 .skill-card:focus-visible .skill-card__num {
-  color: var(--card-on-accent);
-  opacity: 0.22;
+  opacity: 0.42;
 }
 
 .skill-card:focus-visible {
@@ -1310,6 +1304,16 @@ body {
       border-color 0.2s ease,
       box-shadow 0.2s ease,
       opacity 0.2s ease;
+  }
+
+  .skill-card::before {
+    transition: none;
+    transform: none;
+  }
+
+  .skill-card:hover,
+  .skill-card:focus-visible {
+    background: color-mix(in srgb, var(--card-accent) 84%, #000);
   }
 
   .skill-card:hover,
