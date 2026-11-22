@@ -66,7 +66,7 @@ export default function ApproachPage() {
           ))}
         </div>
       </section>
-      <section className="bg-[#f4f4f4] px-4 py-16 sm:px-8">
+      <section className="bg-[#e7f3eb] px-4 py-16 sm:px-8">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="font-display text-4xl tracking-tight text-ink">Как проходит проект</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -82,7 +82,7 @@ export default function ApproachPage() {
       </section>
       <section className="px-4 py-8 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 lg:grid-cols-2">
-          <article className="rounded-[28px] bg-[#f4f4f4] p-7 sm:p-10">
+          <article className="rounded-[28px] bg-[#e7f3eb] p-7 sm:p-10">
             <h2 className="font-display text-3xl text-ink">Что остаётся на мне</h2>
             <p className="mt-4 text-[15px] leading-relaxed text-[#3a3a36]">
               Диагностика, семантика, структура, ТЗ, проверка внедрения, приоритеты и отчёт. На части прошлых проектов я работал внутри агентства: в кейсах описана эта зона, а не результат «отдела из десяти человек».
@@ -93,7 +93,7 @@ export default function ApproachPage() {
             <p className="mt-4 text-[15px] leading-relaxed text-[#3a3a36]">
               Ссылки, производство текстов и вёрстка. Если у вас уже есть разработчик, я ставлю ему короткую очередь. Если нет, скажу об этом до старта, а не в середине месяца.
             </p>
-            <Link href="/services" className="mt-6 inline-flex text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4">
+            <Link href="/services" className="mt-6 inline-flex text-sm font-medium text-ink underline decoration-[#c5d9cc] underline-offset-4">
               Смотреть форматы и цены
             </Link>
           </article>

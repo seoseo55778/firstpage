@@ -252,7 +252,7 @@ function CaseBody({
           ) : null}
           <Link
             href={`/cases/${item.slug}`}
-            className="mt-6 inline-flex text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4"
+            className="mt-6 inline-flex text-sm font-medium text-ink underline decoration-[#c5d9cc] underline-offset-4"
           >
             Открыть страницу кейса
           </Link>
@@ -345,7 +345,7 @@ export function Cases() {
             <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
               Кейсы
             </h2>
-            <Link href="/cases" className="text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4">
+            <Link href="/cases" className="text-sm font-medium text-ink underline decoration-[#c5d9cc] underline-offset-4">
               Все проекты
             </Link>
           </div>

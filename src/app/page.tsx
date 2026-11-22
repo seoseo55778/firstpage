@@ -76,7 +76,7 @@ export default function Home() {
                 Смотреть услуги
               </Link>
             </div>
-            <Link href="/cases" className="mt-4 inline-flex text-sm text-ink underline decoration-[#d9d9d9] underline-offset-4">
+            <Link href="/cases" className="mt-4 inline-flex text-sm text-ink underline decoration-[#c5d9cc] underline-offset-4">
               Или сразу к кейсам
             </Link>
           </Reveal>
@@ -120,7 +120,7 @@ export default function Home() {
       <Cases />
       <ToolsGrid />
 
-      <section id="process" className="bg-[#f4f4f4] px-4 py-24 sm:px-8 sm:py-28">
+      <section id="process" className="bg-[#e7f3eb] px-4 py-24 sm:px-8 sm:py-28">
         <div className="mx-auto max-w-[1200px]">
           <Reveal>
             <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
@@ -140,7 +140,7 @@ export default function Home() {
                     <span
                       className={cn(
                         "process-card__num absolute right-6 top-5 font-display text-6xl font-semibold leading-none",
-                        i === 0 || i === 3 ? "text-ink" : "text-accent-soft",
+                        i === 0 || i === 3 ? "text-ink" : "text-accent",
                       )}
                     >
                       {String(i + 1).padStart(2, "0")}
@@ -158,13 +158,13 @@ export default function Home() {
       <Prices />
       <Faq />
 
-      <section className="bg-[#f4f4f4] px-4 py-20 sm:px-8 sm:py-24">
+      <section className="bg-[#e7f3eb] px-4 py-20 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">
               Из блога
             </h2>
-            <Link href="/blog" className="text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4">
+            <Link href="/blog" className="text-sm font-medium text-ink underline decoration-[#c5d9cc] underline-offset-4">
               Все материалы
             </Link>
           </div>
@@ -175,7 +175,7 @@ export default function Home() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="flex h-full flex-col rounded-[28px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-[#eadf3a]"
+                  className="flex h-full flex-col rounded-[28px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-[#8fb56a]"
                 >
                   <p className="text-sm text-muted">{formatDate(post.date)}</p>
                   <h3 className="mt-4 font-display text-2xl leading-tight text-ink">{post.title}</h3>

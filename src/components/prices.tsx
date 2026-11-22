@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Prices() {
   return (
-    <section id="prices" className="bg-[#f4f4f4] px-4 py-24 sm:px-8 sm:py-28">
+    <section id="prices" className="bg-[#e7f3eb] px-4 py-24 sm:px-8 sm:py-28">
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
           <h2 className="font-display text-4xl leading-[0.95] tracking-tight text-ink sm:text-5xl">

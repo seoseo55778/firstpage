@@ -20,13 +20,13 @@ export default function CasesPage() {
         title="Проекты, где я вёл SEO"
         lead="В карточке — моя зона: аудит, семантика, структура, ТЗ и контроль внедрения. Если проект шёл через агентство, здесь не расписан весь штат, только работа, которую делал я."
       />
-      <section className="bg-[#f4f4f4] px-4 pb-20 sm:px-8">
+      <section className="bg-[#e7f3eb] px-4 pb-20 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 md:grid-cols-2">
           {cases.map((item) => (
             <Link
               key={item.slug}
               href={`/cases/${item.slug}`}
-              className="flex h-full flex-col rounded-[28px] border border-line bg-white p-7 transition hover:-translate-y-1 hover:border-[#eadf3a] sm:p-8"
+              className="flex h-full flex-col rounded-[28px] border border-line bg-white p-7 transition hover:-translate-y-1 hover:border-[#8fb56a] sm:p-8"
             >
               <p className="text-sm text-muted">
                 {item.number} · {item.niche}

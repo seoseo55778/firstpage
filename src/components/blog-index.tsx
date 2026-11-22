@@ -23,7 +23,7 @@ export function BlogIndex({ posts }: { posts: Post[] }) {
           onClick={() => setTag(null)}
           className={cn(
             "h-10 rounded-full border px-4 text-sm transition",
-            tag === null ? "border-ink bg-ink text-white" : "border-[#d9d9d9] bg-white text-ink hover:border-ink",
+            tag === null ? "border-ink bg-ink text-white" : "border-[#c5d9cc] bg-white text-ink hover:border-ink",
           )}
         >
           Все
@@ -35,7 +35,7 @@ export function BlogIndex({ posts }: { posts: Post[] }) {
             onClick={() => setTag(item)}
             className={cn(
               "h-10 rounded-full border px-4 text-sm transition",
-              tag === item ? "border-ink bg-ink text-white" : "border-[#d9d9d9] bg-white text-ink hover:border-ink",
+              tag === item ? "border-ink bg-ink text-white" : "border-[#c5d9cc] bg-white text-ink hover:border-ink",
             )}
           >
             {item}
@@ -47,7 +47,7 @@ export function BlogIndex({ posts }: { posts: Post[] }) {
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
-            className="group flex h-full flex-col rounded-[28px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-[#eadf3a] sm:p-8"
+            className="group flex h-full flex-col rounded-[28px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-[#8fb56a] sm:p-8"
           >
             <p className="text-sm text-muted">
               {formatDate(post.date)} · {post.reading}

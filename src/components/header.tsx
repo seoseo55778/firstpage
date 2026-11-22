@@ -93,7 +93,7 @@ export function Header() {
                     <Link
                       key={item.slug}
                       href={`/services/${item.slug}`}
-                      className="block rounded-xl px-4 py-3 transition hover:bg-[#f4f4f4]"
+                      className="block rounded-xl px-4 py-3 transition hover:bg-[#e7f3eb]"
                     >
                       <span className="flex items-baseline justify-between gap-4">
                         <span className="font-medium text-ink">{item.menuTitle}</span>
@@ -104,7 +104,7 @@ export function Header() {
                   ))}
                   <Link
                     href="/services"
-                    className="mt-1 block rounded-xl px-4 py-3 text-sm font-medium text-ink transition hover:bg-[#f4f4f4]"
+                    className="mt-1 block rounded-xl px-4 py-3 text-sm font-medium text-ink transition hover:bg-[#e7f3eb]"
                   >
                     Все форматы работы
                   </Link>

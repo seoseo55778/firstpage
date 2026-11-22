@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #ffffff;
-  --ink: #171717;
-  --muted: #6b6b68;
-  --line: #e6e6e6;
+  --paper: #f7fbf8;
+  --ink: #14261c;
+  --muted: #5a6d62;
+  --line: #d3e3d8;
   --surface: #ffffff;
-  --accent: #2457ff;
-  --accent-soft: #f0ff40;
-  --accent-hover: #121212;
-  --section-warm: #f4f4f4;
-  --sphere: #f4f4f4;
+  --accent: #1b7a46;
+  --accent-soft: #c5eb6a;
+  --accent-hover: #12382c;
+  --section-warm: #e7f3eb;
+  --sphere: #e7f3eb;
   --sphere-hover: #1c1c1c;
 }
 
@@ -61,13 +61,13 @@ body {
 
 .orbit {
   background:
-    radial-gradient(900px 480px at 88% -8%, rgba(36, 87, 255, 0.08), transparent 55%),
-    radial-gradient(640px 360px at 0% 12%, rgba(240, 255, 64, 0.18), transparent 52%);
+    radial-gradient(900px 480px at 88% -8%, rgba(27, 122, 70, 0.12), transparent 55%),
+    radial-gradient(640px 360px at 0% 12%, rgba(197, 235, 106, 0.34), transparent 52%);
 }
 
 .hero-letter {
   display: inline-block;
-  color: #c6c6c4;
+  color: #c5d0c8;
   animation: hero-letter-ink 4.6s ease-in-out infinite;
 }
 
@@ -92,7 +92,7 @@ body {
 @keyframes hero-letter-ink {
   0%,
   12% {
-    color: #c6c6c4;
+    color: #c5d0c8;
   }
 
   34%,
@@ -102,24 +102,24 @@ body {
 
   90%,
   100% {
-    color: #c6c6c4;
+    color: #c5d0c8;
   }
 }
 
 @keyframes hero-letter-fill {
   0%,
   12% {
-    color: #c6c6c4;
+    color: #c5d0c8;
   }
 
   34%,
   68% {
-    color: #f0ff40;
+    color: var(--accent-soft);
   }
 
   90%,
   100% {
-    color: #c6c6c4;
+    color: #c5d0c8;
   }
 }
 
@@ -175,7 +175,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: rgba(0, 0, 0, 0.16);
+  background: rgba(18, 56, 44, 0.22);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.85s cubic-bezier(0.33, 0.05, 0.2, 1);
@@ -833,12 +833,12 @@ body {
 }
 
 .process-card--fill {
-  background: #f0ff40;
-  border-color: #e4ee3a;
+  background: var(--accent-soft);
+  border-color: #b5dc62;
 }
 
 .process-card--fill p {
-  color: #3a3a36;
+  color: #244033;
 }
 
 .process-card:hover {
@@ -847,12 +847,12 @@ body {
 }
 
 .faq-list {
-  border-top: 2px solid #d9d9d9;
+  border-top: 2px solid #c5d9cc;
 }
 
 .faq-item {
   position: relative;
-  border-bottom: 2px solid #d9d9d9;
+  border-bottom: 2px solid #c5d9cc;
 }
 
 .faq-item__header {
@@ -887,7 +887,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #f0ff40;
+  background: var(--accent-soft);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 1.15s cubic-bezier(0.33, 0.05, 0.2, 1);
@@ -1012,7 +1012,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #f0ff40;
+  background: var(--accent-soft);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1072,7 +1072,7 @@ body {
 .price-card:hover,
 .price-card:focus-visible {
   transform: translateY(-6px);
-  border-color: #eadf3a;
+  border-color: #8fb56a;
   box-shadow: 0 18px 40px rgba(23, 23, 23, 0.08);
   outline: none;
 }
@@ -1095,12 +1095,12 @@ body {
 }
 
 .price-card--fill {
-  background: #f0ff40;
-  border-color: #e4ee3a;
+  background: var(--accent-soft);
+  border-color: #b5dc62;
 }
 
 .price-card--fill::before {
-  background: #171717;
+  background: var(--accent-hover);
 }
 
 .price-card--fill:hover,
@@ -1116,20 +1116,20 @@ body {
 .price-card--fill:focus-visible .price-card__list,
 .price-card--fill:focus-visible .price-card__note {
   color: #fff;
-  border-color: #171717;
+  border-color: var(--accent-hover);
 }
 
 .page-hero {
-  background: #f4f4f4;
+  background: var(--section-warm);
 }
 
 .proof-band {
-  background: #171717;
+  background: var(--accent-hover);
   color: #fff;
 }
 
 .proof-band__value {
-  color: #f0ff40;
+  color: var(--accent-soft);
 }
 
 .proof-band__label {
@@ -1137,7 +1137,7 @@ body {
 }
 
 .site-footer {
-  background: #171717;
+  background: var(--accent-hover);
   color: #fff;
 }
 
@@ -1150,9 +1150,9 @@ body {
 }
 
 .contact-panel {
-  background: #171717;
+  background: var(--accent-hover);
   color: #fff;
-  border: 1px solid #171717;
+  border: 1px solid var(--accent-hover);
   overflow: hidden;
 }
 
@@ -1196,7 +1196,7 @@ body {
 }
 
 .sphere-section {
-  background: #f4f4f4;
+  background: var(--section-warm);
   color: var(--ink);
 }
 
@@ -1251,7 +1251,7 @@ body {
   justify-content: center;
   height: 68px;
   border-radius: 999px;
-  border: 2px solid #d9d9d9;
+  border: 2px solid #c5d9cc;
   padding: 0 28px;
   font-size: 1.125rem;
   font-weight: 600;
@@ -1279,7 +1279,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #f0ff40;
+  background: var(--accent-soft);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1306,7 +1306,7 @@ body {
 .sphere-tag:focus-visible {
   transform: translateY(-2px);
   color: var(--ink);
-  border-color: #eadf3a;
+  border-color: #8fb56a;
   box-shadow: 0 12px 24px rgba(23, 23, 23, 0.1);
 }
 
@@ -1349,7 +1349,7 @@ body {
   }
 
   .hero-letter--fill {
-    color: #f0ff40;
+    color: var(--accent-soft);
   }
 
   .skill-card,
@@ -1406,7 +1406,7 @@ body {
   .sphere-tag:hover,
   .sphere-tag:focus-visible {
     transform: none;
-    background: #f0ff40;
+    background: var(--accent-soft);
   }
 
   .sphere-tag:hover::before,
@@ -1422,7 +1422,7 @@ body {
   .price-card:hover,
   .price-card:focus-visible {
     transform: none;
-    background: #f0ff40;
+    background: var(--accent-soft);
   }
 
   .price-card:hover::before,
@@ -1432,7 +1432,7 @@ body {
 
   .price-card--fill:hover,
   .price-card--fill:focus-visible {
-    background: #171717;
+    background: var(--accent-hover);
     color: #fff;
   }
 
@@ -1451,7 +1451,7 @@ body {
   .faq-item:hover .faq-item__header,
   .faq-item.active .faq-item__header,
   .faq-item__header:focus-visible {
-    background: #f0ff40;
+    background: var(--accent-soft);
   }
 }
 
@@ -1474,6 +1474,6 @@ body {
 
 .contact-panel .tg-btn:hover {
   background: #fff;
-  color: #171717;
+  color: var(--accent-hover);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
 }

@@ -118,7 +118,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
         </div>
       </section>
 
-      <section className="bg-[#f4f4f4] px-4 py-16 sm:px-8">
+      <section className="bg-[#e7f3eb] px-4 py-16 sm:px-8">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="font-display text-4xl tracking-tight text-ink">Что входит</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -149,7 +149,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
               ))}
             </ol>
           </div>
-          <aside className="h-fit rounded-[28px] bg-[#f0ff40] p-7 sm:p-8">
+          <aside className="h-fit rounded-[28px] bg-[#c5eb6a] p-7 sm:p-8">
             <h2 className="font-display text-2xl text-ink">Не входит в сумму</h2>
             <ul className="mt-5 space-y-3">
               {service.excludes.map((item) => (
@@ -166,7 +166,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       {relatedCase ? (
         <section className="proof-band px-4 py-14 sm:px-8">
           <div className="mx-auto max-w-[1200px]">
-            <p className="text-[13px] uppercase tracking-[0.14em] text-[#f0ff40]">Близкий по задаче кейс</p>
+            <p className="text-[13px] uppercase tracking-[0.14em] text-[#c5eb6a]">Близкий по задаче кейс</p>
             <h2 className="mt-3 max-w-3xl font-display text-3xl tracking-tight text-white sm:text-4xl">
               {relatedCase.title}
             </h2>
@@ -179,7 +179,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
                 </p>
               ))}
             </div>
-            <Link href={`/cases/${relatedCase.slug}`} className="mt-8 inline-flex text-sm font-medium text-white underline decoration-[#f0ff40] underline-offset-4">
+            <Link href={`/cases/${relatedCase.slug}`} className="mt-8 inline-flex text-sm font-medium text-white underline decoration-[#c5eb6a] underline-offset-4">
               Разобрать кейс
             </Link>
           </div>
@@ -189,7 +189,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       <section className="px-4 py-8 sm:px-8">
         <div className="mx-auto max-w-[1200px]">
           <h2 className="font-display text-4xl tracking-tight text-ink">Вопросы</h2>
-          <div className="mt-8 divide-y-2 divide-[#d9d9d9] border-y-2 border-[#d9d9d9]">
+          <div className="mt-8 divide-y-2 divide-[#c5d9cc] border-y-2 border-[#c5d9cc]">
             {service.faqs.map((item) => (
               <article key={item.q} className="py-6">
                 <h3 className="font-display text-xl text-ink">{item.q}</h3>
@@ -201,12 +201,12 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       </section>
 
       {relatedPosts.length > 0 ? (
-        <section className="bg-[#f4f4f4] px-4 py-16 sm:px-8">
+        <section className="bg-[#e7f3eb] px-4 py-16 sm:px-8">
           <div className="mx-auto max-w-[1200px]">
             <h2 className="font-display text-4xl tracking-tight text-ink">Материалы по теме</h2>
             <div className="mt-8 grid gap-4 md:grid-cols-2">
               {relatedPosts.map((post) => (
-                <Link key={post.slug} href={`/blog/${post.slug}`} className="rounded-[28px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-[#eadf3a]">
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="rounded-[28px] border border-line bg-white p-6 transition hover:-translate-y-1 hover:border-[#8fb56a]">
                   <h3 className="font-display text-2xl text-ink">{post.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted">{post.description}</p>
                 </Link>

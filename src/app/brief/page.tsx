@@ -23,12 +23,12 @@ export default function BriefPage() {
           href={site.telegram}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-medium text-ink underline decoration-[#d9d9d9] underline-offset-4"
+          className="text-sm font-medium text-ink underline decoration-[#c5d9cc] underline-offset-4"
         >
           {site.telegramHandle}
         </a>
       </PageHero>
-      <section className="bg-[#f4f4f4] px-4 pb-20 sm:px-8">
+      <section className="bg-[#e7f3eb] px-4 pb-20 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-8 lg:grid-cols-[minmax(0,640px)_1fr]">
           <BriefForm />
           <aside className="h-fit rounded-[28px] bg-white p-7">

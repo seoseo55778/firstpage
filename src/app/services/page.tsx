@@ -20,7 +20,7 @@ export default function ServicesPage() {
         title="Три способа начать, без пакета «всё включено»"
         lead="Аудит — если нужно понять объём. SEO — если нужны заявки из поиска месяц за месяцем. GEO — если важно, чтобы факты о вас цитировали нейросети. Ссылки, тексты и вёрстка считаются отдельно."
       />
-      <section className="bg-[#f4f4f4] px-4 pb-20 sm:px-8">
+      <section className="bg-[#e7f3eb] px-4 pb-20 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 lg:grid-cols-3">
           {services.map((item) => (
             <Link

@@ -17,7 +17,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             {services.map((item) => (
               <li key={item.slug}>
-                <Link href={`/services/${item.slug}`} className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
+                <Link href={`/services/${item.slug}`} className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#c5eb6a]">
                   {item.menuTitle}
                 </Link>
               </li>
@@ -28,22 +28,22 @@ export function Footer() {
           <p className="site-footer__muted text-[13px] uppercase tracking-[0.14em]">Сайт</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li>
-              <Link href="/cases" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
+              <Link href="/cases" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#c5eb6a]">
                 Кейсы
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
+              <Link href="/blog" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#c5eb6a]">
                 Блог
               </Link>
             </li>
             <li>
-              <Link href="/approach" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
+              <Link href="/approach" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#c5eb6a]">
                 Подход
               </Link>
             </li>
             <li>
-              <Link href="/brief" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#f0ff40]">
+              <Link href="/brief" className="underline decoration-transparent underline-offset-4 transition hover:decoration-[#c5eb6a]">
                 Бриф
               </Link>
             </li>
@@ -55,7 +55,7 @@ export function Footer() {
             href={site.telegram}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex text-sm underline decoration-[#f0ff40] underline-offset-4"
+            className="mt-3 inline-flex text-sm underline decoration-[#c5eb6a] underline-offset-4"
           >
             {site.telegramHandle}
           </a>

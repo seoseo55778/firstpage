@@ -69,7 +69,7 @@ export default async function CasePage({ params }: { params: Promise<Params> }) 
             </ul>
             {item.note ? <p className="mt-8 text-[15px] leading-relaxed text-muted">{item.note}</p> : null}
           </div>
-          <aside className="h-fit rounded-[28px] bg-[#f4f4f4] p-7">
+          <aside className="h-fit rounded-[28px] bg-[#e7f3eb] p-7">
             <h2 className="font-display text-2xl text-ink">Условия</h2>
             <dl className="mt-5 space-y-4 text-sm">
               {item.engine ? (
@@ -100,7 +100,7 @@ export default async function CasePage({ params }: { params: Promise<Params> }) 
           </aside>
         </div>
       </section>
-      <section className="bg-[#f4f4f4] px-4 py-12 sm:px-8">
+      <section className="bg-[#e7f3eb] px-4 py-12 sm:px-8">
         <div className="mx-auto grid max-w-[1200px] gap-4 md:grid-cols-2">
           {item.images.map((image) => (
             <figure key={image.src} className="overflow-hidden rounded-[28px] border border-line bg-white">
@@ -121,7 +121,7 @@ export default async function CasePage({ params }: { params: Promise<Params> }) 
           <h2 className="font-display text-3xl text-ink">Другие проекты</h2>
           <div className="mt-6 flex flex-col gap-3">
             {more.map((entry) => (
-              <Link key={entry.slug} href={`/cases/${entry.slug}`} className="text-lg text-ink underline decoration-[#d9d9d9] underline-offset-4">
+              <Link key={entry.slug} href={`/cases/${entry.slug}`} className="text-lg text-ink underline decoration-[#c5d9cc] underline-offset-4">
                 {entry.title}
               </Link>
             ))}
